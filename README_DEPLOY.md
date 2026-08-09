@@ -22,7 +22,7 @@ git push -u origin main
    - Root directory: `/`
 4. Deploy
 
-`public/_redirects` is already included, so client-side routes (e.g. `/tournaments/5`) work correctly on refresh/direct load.
+SPA routing (e.g. `/tournaments/5` resolving on refresh) is handled by `wrangler.jsonc`'s `not_found_handling: single-page-application` setting — don't add a `public/_redirects` file alongside it, the two conflict and Cloudflare will reject the deploy with a redirect-loop error.
 
 ## Local check before pushing (optional)
 ```

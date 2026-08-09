@@ -77,7 +77,10 @@ export default function TrackDatabase() {
         )}
       </header>
 
-      <Attribution label="SLS & Friends Draft Cheat Sheet" href="https://docs.google.com/spreadsheets/d/1p1cVBGqiIVG0ytMgox9y7irRJKJjQKDogW3axuGh_sI/edit?gid=0#gid=0" />
+      <div className="attribution-group">
+        <Attribution label="SLS & Friends Draft Cheat Sheet" href="https://docs.google.com/spreadsheets/d/1p1cVBGqiIVG0ytMgox9y7irRJKJjQKDogW3axuGh_sI/edit?gid=0#gid=0" />
+        <Attribution label="Umalator (course geometry reference)" href="https://kachi-dev.github.io/uma-tools/umalator-global/" />
+      </div>
 
       <div className="controls">
         <input

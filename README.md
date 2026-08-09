@@ -1,6 +1,23 @@
-# Uma Toolbox
+# Uma Compass
 
-A small multi-page site collecting reference tools/cheat sheets in one place.
+A toolkit for Umamusume: Pretty Derby drafts and server tournaments — track reference, uma kit
+classification, draft/strategy planning, and a full tournament runner (brackets, groups, leagues)
+with Discord-ready result exports.
+
+**This project is in beta.** Some skill condition data may still be inaccurate — always
+double-check against [gametora.com](https://gametora.com/umamusume) when it matters.
+
+## Tools
+
+- **Track Database** — every course with distance, surface, threshold, and last-spurt timing,
+  plus the skills that tend to matter there.
+- **Uma Kit Library** — every uma's kit, classified by race phase, accel-vs-velocity, and
+  corner/straight focus.
+- **Strategy Planner** — filter by distance, accel/spurt shape, and surface to find matching
+  tracks, skills, and umas.
+- **Draft Board** — manage your saved tracks and umas, with recommendations.
+- **Tournaments** — run knockout, group+knockout, or league formats for 3-vs-3-vs-3 server
+  competitions, with standings, brackets, and one-click Discord result exports.
 
 ## Setup
 
@@ -20,23 +37,31 @@ npm run preview
 
 ## Structure
 
-- `src/pages/Home.jsx` — landing page listing all tools
-- `src/pages/TrackDatabase.jsx` — searchable/filterable racetrack reference
-- `src/pages/ChampionshipTimeline.jsx` — Champions Meeting / League of Heroes schedule, grouped by scenario
-- `src/data/tracks.js` — track dataset
-- `src/data/events.js` — CM/LoH event dataset
-- `src/components/Attribution.jsx` — the "source" credit banner shown at the top of each tool page
-- `src/components/Layout.jsx` — shared nav bar
+- `src/pages/` — one file per tool/page
+- `src/components/` — shared UI (layout, nav, tournament sub-components, track visuals)
+- `src/data/` — track, event, uma profile, and skill-name datasets
+- `src/utils/` — recommendation engine, skill classifier, tournament engine, Discord export
+  formatting
+- `src/context/` — draft pool and tournament state (persisted to `localStorage`)
 
-## Adding a new tool
+## Adding a favicon
 
-1. Add a data file under `src/data/`.
-2. Add a page component under `src/pages/`, including an `<Attribution label="..." href="..." />` at the top.
-3. Register the route in `src/App.jsx`.
-4. Add a card for it in `src/pages/Home.jsx` and a link in `src/components/Layout.jsx`.
+There isn't one yet. To add one:
 
-## To do
+1. Get/make a small square image (a `.png` or `.ico`, e.g. 32x32 or 64x64).
+2. Drop it in the `public/` folder (create that folder if it doesn't exist yet) — e.g. `public/favicon.png`.
+3. In `index.html`, add this inside `<head>`:
+   ```html
+   <link rel="icon" type="image/png" href="/favicon.png" />
+   ```
+   (use `type="image/x-icon"` if you go with a `.ico` file instead)
+4. Restart `npm run dev` (or rebuild) to see it in the browser tab.
 
-- Fill in the real source links in each page's `<Attribution href="..." />` — currently placeholders (`#`).
-- Track dataset: double check "# Corners" / "# Straights" / "Before/After" columns against the original PDF (the text extractor merged some columns).
-- Championship timeline: several late-2026/2027 entries have unconfirmed tracks/details (marked `?` in the source).
+## Links
+
+- Project: https://github.com/Wolfhaize/Uma-Compass
+- Discord: https://discord.gg/XD4w2PSAz7
+
+## License
+
+GPL-3.0-or-later — see [LICENSE](./LICENSE).

@@ -1,8 +1,13 @@
 {
   "name": "uma-track-sheet",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wolfhaize/Uma-Compass"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

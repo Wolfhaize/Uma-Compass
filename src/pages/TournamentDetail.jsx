@@ -94,12 +94,40 @@ function ParticipantsTab({ t, actions }) {
   )
 }
 
+// Figures out who won, however the tournament format determines that —
+// a completed Grand Final's 1st place, or (for plain leagues with no
+// bracket) whoever tops the final standings.
+function getChampion(t) {
+  const finalMatch = t.matches.find(m => m.stage === 'final' && m.status === 'completed')
+  if (finalMatch) {
+    const winner = finalMatch.placements?.find(p => p.place === 1)
+    return t.players.find(p => p.id === winner?.playerId)?.name || null
+  }
+  if (t.format === 'league' && t.status === 'completed') {
+    const standings = computeStandings(t.players, t.matches, t.settings.pointsValues, { stage: 'league' })
+    return standings[0]?.name || null
+  }
+  return null
+}
+
+function CompletedBanner({ t }) {
+  if (t.status !== 'completed') return null
+  const champion = getChampion(t)
+  return (
+    <div className="tourney-completed-banner">
+      <span className="tourney-completed-badge">🏁 Tournament Ended</span>
+      {champion ? <span>Champion: <b>{champion}</b> 🏆</span> : <span>Final results are locked in.</span>}
+    </div>
+  )
+}
+
 function ScheduleTab({ t, actions, onOpenMatch }) {
   if (t.status === 'setup') return <p className="muted small">Add and confirm players first, then start the tournament to generate the schedule.</p>
 
   if (t.format === 'knockout') {
     return (
       <section className="board-section">
+        <CompletedBanner t={t} />
         <h2>Bracket</h2>
         <BracketView matches={t.matches} players={t.players} onOpenMatch={onOpenMatch} />
       </section>
@@ -111,6 +139,7 @@ function ScheduleTab({ t, actions, onOpenMatch }) {
     return (
       <>
         <section className="board-section">
+          <CompletedBanner t={t} />
           <div className="track-hub-header" style={{ marginBottom: 8 }}>
             <h2 style={{ margin: 0 }}>Group Stage</h2>
             {!t.playoffsStarted && (
@@ -134,6 +163,7 @@ function ScheduleTab({ t, actions, onOpenMatch }) {
   // league / league_finals
   return (
     <section className="board-section">
+      <CompletedBanner t={t} />
       <h2>Season Fixtures</h2>
       <LeagueFixtures matches={t.matches} players={t.players} onOpenMatch={onOpenMatch} stage="league" />
       {t.matches.some(m => m.stage === 'final') && (
@@ -233,6 +263,22 @@ function SettingsTab({ t, actions, navigate }) {
         Recalculate remaining schedule
       </button>
 
+      <h2 style={{ marginTop: 20 }}>Tournament status</h2>
+      <p className="muted small">
+        {t.status === 'completed'
+          ? 'This tournament is marked completed. You can reopen it to keep recording results.'
+          : 'End the tournament early (or after the finals) without deleting anything — it stays in your list, just marked completed.'}
+      </p>
+      <div className="danger-zone-actions">
+        {t.status === 'completed' ? (
+          <button className="reset" onClick={() => actions.reopenTournament(t.id)}>Reopen tournament</button>
+        ) : (
+          <button className="reset" disabled={t.status !== 'in_progress'} onClick={() => actions.endTournament(t.id)}>
+            End tournament
+          </button>
+        )}
+      </div>
+
       <h2 style={{ marginTop: 20 }}>Activity log</h2>
       <ul className="tourney-log">
         {[...(t.log || [])].reverse().map((l, i) => (
@@ -241,9 +287,11 @@ function SettingsTab({ t, actions, navigate }) {
       </ul>
 
       <h2 style={{ marginTop: 20, color: '#ff6b6b' }}>Danger zone</h2>
-      <button className="remove-btn" style={{ width: 'auto', padding: '8px 14px' }} onClick={() => {
-        if (confirm(`Delete "${t.name}"? This can't be undone.`)) { actions.deleteTournament(t.id); navigate('/tournaments') }
-      }}>Delete tournament</button>
+      <div className="danger-zone-actions">
+        <button className="danger-btn" onClick={() => {
+          if (confirm(`Delete "${t.name}"? This can't be undone.`)) { actions.deleteTournament(t.id); navigate('/tournaments') }
+        }}>Delete tournament</button>
+      </div>
     </section>
   )
 }

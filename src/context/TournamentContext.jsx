@@ -4,6 +4,19 @@ import {
   buildRoundRobinRounds, suggestRoundCount, splitIntoGroups,
   syncKnockout, computeStandings, placementsFromFinishOrder,
 } from '../utils/tournamentEngine.js'
+import UMA_PROFILES from '../data/uma_profiles.json'
+
+// Builds a short "1st Uma (Player), 2nd Uma (Player)..." string for a
+// finished race, so the activity log records what actually happened
+// instead of just "a race was recorded".
+function describeFinishOrder(finishOrder, players) {
+  const nameOf = (pid) => players.find(p => p.id === pid)?.name || '???'
+  const umaOf = (umaId) => (umaId ? (UMA_PROFILES.find(u => u.cardId === umaId)?.name || 'Unassigned') : 'Unassigned')
+  const ordinals = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th']
+  return (finishOrder || [])
+    .map((e, i) => `${ordinals[i] || `${i + 1}th`} ${umaOf(e.umaId)} (${nameOf(e.playerId)})`)
+    .join(', ')
+}
 
 const STORAGE_KEY = 'draftCompass.tournaments.v1'
 
@@ -87,22 +100,34 @@ export function TournamentProvider({ children }) {
   }, [updateTournament])
 
   const updatePlayerName = useCallback((tid, playerId, name) => {
-    updateTournament(tid, t => ({
-      players: t.players.map(p => p.id === playerId ? { ...p, name } : p),
-    }))
+    updateTournament(tid, t => {
+      const player = t.players.find(p => p.id === playerId)
+      return {
+        players: t.players.map(p => p.id === playerId ? { ...p, name } : p),
+        log: player && player.name !== name ? appendLog(t, `Renamed player "${player.name}" to "${name}".`) : t.log,
+      }
+    })
   }, [updateTournament])
 
   const updatePlayerUmas = useCallback((tid, playerId, umaIds) => {
-    updateTournament(tid, t => ({
-      players: t.players.map(p => p.id === playerId ? { ...p, umas: umaIds.slice(0, 3) } : p),
-    }))
+    updateTournament(tid, t => {
+      const player = t.players.find(p => p.id === playerId)
+      const names = umaIds.map(id => UMA_PROFILES.find(u => u.cardId === id)?.name || id).join(', ') || 'none'
+      return {
+        players: t.players.map(p => p.id === playerId ? { ...p, umas: umaIds.slice(0, 3) } : p),
+        log: appendLog(t, `Set ${player?.name || 'a player'}'s aces to: ${names}.`),
+      }
+    })
   }, [updateTournament])
 
   const removePlayer = useCallback((tid, playerId) => {
-    updateTournament(tid, t => ({
-      players: t.players.filter(p => p.id !== playerId),
-      log: appendLog(t, `Removed a player from setup.`),
-    }))
+    updateTournament(tid, t => {
+      const player = t.players.find(p => p.id === playerId)
+      return {
+        players: t.players.filter(p => p.id !== playerId),
+        log: appendLog(t, `Removed player "${player?.name || playerId}" from setup.`),
+      }
+    })
   }, [updateTournament])
 
   const disqualifyPlayer = useCallback((tid, playerId, disqualified = true) => {
@@ -233,7 +258,8 @@ export function TournamentProvider({ children }) {
         if (matches.some(m => m.stage === 'final' && m.status === 'completed')) extra.status = 'completed'
       }
 
-      return { matches, ...extra, log: appendLog(t, `Recorded result for a ${match.stage.replace('_', ' ')} race.`) }
+      const label = match.label || `${match.stage.replace('_', ' ')} race (Round ${match.round})`
+      return { matches, ...extra, log: appendLog(t, `Result recorded — ${label}: ${describeFinishOrder(finishOrder, t.players)}.`) }
     })
   }, [updateTournament])
 
@@ -258,7 +284,29 @@ export function TournamentProvider({ children }) {
         matches = result.matches
       }
 
-      return { matches, status: t.status === 'completed' ? 'in_progress' : t.status, log: appendLog(t, `Edited a previous result and rebuilt the bracket from that point onward.`) }
+      const label = match.label || `${match.stage.replace('_', ' ')} race (Round ${match.round})`
+      return {
+        matches,
+        status: t.status === 'completed' ? 'in_progress' : t.status,
+        log: appendLog(t, `Edited result — ${label}: ${describeFinishOrder(finishOrder, t.players)} (bracket rebuilt from this point onward).`),
+      }
+    })
+  }, [updateTournament])
+
+  // Manually mark a tournament as finished, without deleting anything —
+  // handy for cutting a tournament short or closing it out after the
+  // finals when you don't want more results recorded against it.
+  const endTournament = useCallback((tid) => {
+    updateTournament(tid, t => {
+      if (t.status === 'completed') return {}
+      return { status: 'completed', log: appendLog(t, `Tournament manually ended.`) }
+    })
+  }, [updateTournament])
+
+  const reopenTournament = useCallback((tid) => {
+    updateTournament(tid, t => {
+      if (t.status !== 'completed') return {}
+      return { status: 'in_progress', log: appendLog(t, `Tournament reopened.`) }
     })
   }, [updateTournament])
 
@@ -309,9 +357,11 @@ export function TournamentProvider({ children }) {
     tournaments, getTournament, createTournament, deleteTournament, updateTournament,
     addPlayer, updatePlayerName, updatePlayerUmas, removePlayer, disqualifyPlayer,
     startTournament, advanceToPlayoffs, recordResult, editResult, recalculateSchedule,
+    endTournament, reopenTournament,
   }), [tournaments, getTournament, createTournament, deleteTournament, updateTournament,
     addPlayer, updatePlayerName, updatePlayerUmas, removePlayer, disqualifyPlayer,
-    startTournament, advanceToPlayoffs, recordResult, editResult, recalculateSchedule])
+    startTournament, advanceToPlayoffs, recordResult, editResult, recalculateSchedule,
+    endTournament, reopenTournament])
 
   return <TournamentContext.Provider value={value}>{children}</TournamentContext.Provider>
 }

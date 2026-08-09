@@ -40,7 +40,7 @@ const TRIGGER_LOCATION_LABEL = {
 function segmentLabel(skill) {
   if (skill.hasData === false) return 'Unknown'
   
-  // Use triggerLocation if available, fall back to corner for backward compatibility
+  // triggerLocation is the canonical field; corner is an older alias.
   const location = skill.triggerLocation || skill.corner
   
   if (location === 'distance' && skill.distanceTrigger) {
@@ -515,10 +515,15 @@ export default function UmaKitLibrary() {
         )}
       </header>
 
+      <div className="accuracy-disclaimer">
+        ⚠️ Some uma skill condition data on this page may still be inaccurate. Please cross-reference against{' '}
+        <a href="https://gametora.com/umamusume" target="_blank" rel="noopener noreferrer" className="inline-link">gametora.com</a>.
+      </div>
+
       <section className="board-section">
         <h2>Search by skill</h2>
         <p className="muted small">
-          Type a skill name (or part of one) — e.g. "pump some iron" — to see which umas naturally carry it.
+          Type a skill name (or part of one) — e.g. "no stopping me" — to see which umas naturally carry it.
         </p>
         <input
           className="text-input"

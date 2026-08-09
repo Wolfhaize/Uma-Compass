@@ -3,7 +3,14 @@
 // Plain-text formatters tuned for pasting straight into a Discord message —
 // bold via **, code blocks for tables, no markdown Discord doesn't support.
 
+import UMA_PROFILES from '../data/uma_profiles.json'
+
 const MEDAL = { 1: '🥇', 2: '🥈', 3: '🥉' }
+
+function umaNameFor(umaId) {
+  if (!umaId) return null
+  return UMA_PROFILES.find(u => u.cardId === umaId)?.name || null
+}
 
 function pad(str, len) {
   str = String(str)
@@ -29,11 +36,21 @@ export function formatDraftPoolForDiscord(tracks, umas = []) {
 
 export function formatMatchResultForDiscord(match, players) {
   const name = (pid) => players.find(p => p.id === pid)?.name || '???'
+  // finishOrder holds the actual per-uma crossing order (umaId + playerId),
+  // so we can show which uma earned each placement, not just who ran it.
+  const umaFor = (pid, place) => {
+    const entry = (match.finishOrder || [])[place - 1]
+    if (entry && entry.playerId === pid) return umaNameFor(entry.umaId)
+    const anyEntry = (match.finishOrder || []).find(e => e.playerId === pid)
+    return anyEntry ? umaNameFor(anyEntry.umaId) : null
+  }
   const label = match.label || `Round ${match.round}`
   const lines = [`**🏁 ${label}**`]
   const placements = [...(match.placements || [])].sort((a, b) => a.place - b.place)
   for (const p of placements) {
-    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${name(p.playerId)}`)
+    const uma = umaFor(p.playerId, p.place)
+    const runner = name(p.playerId)
+    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${uma ? `${uma} (${runner})` : runner}`)
   }
   if (match.note) lines.push(`_${match.note}_`)
   return lines.join('\n')
@@ -51,10 +68,18 @@ export function formatStandingsForDiscord(standings, title = 'Standings') {
 
 export function formatPodiumForDiscord(tournamentName, finalMatch, losersMatch, players) {
   const name = (pid) => players.find(p => p.id === pid)?.name || '???'
+  const umaFor = (pid, place) => {
+    const entry = (finalMatch.finishOrder || [])[place - 1]
+    if (entry && entry.playerId === pid) return umaNameFor(entry.umaId)
+    const anyEntry = (finalMatch.finishOrder || []).find(e => e.playerId === pid)
+    return anyEntry ? umaNameFor(anyEntry.umaId) : null
+  }
   const lines = [`**🏆 ${tournamentName} — Final Standings**`]
   const placements = [...(finalMatch.placements || [])].sort((a, b) => a.place - b.place)
   for (const p of placements) {
-    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${name(p.playerId)}`)
+    const uma = umaFor(p.playerId, p.place)
+    const runner = name(p.playerId)
+    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${uma ? `${uma} (${runner})` : runner}`)
   }
   if (losersMatch) {
     const losers = [...(losersMatch.placements || [])].sort((a, b) => a.place - b.place)

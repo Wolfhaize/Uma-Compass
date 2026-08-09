@@ -20,6 +20,7 @@ function Chip({ children, count }) {
 export default function StrategyPlanner() {
   const [distances, setDistances] = useState([])
   const [accels, setAccels] = useState([])
+  const [surfaces, setSurfaces] = useState([])
   const [confirmingAdd, setConfirmingAdd] = useState(false)
   const [selectedTrack, setSelectedTrack] = useState(null)
   const { selectedKeys, toggleTrack, isTrackTaken, toggleTrackTaken } = useDraft()
@@ -30,24 +31,28 @@ export default function StrategyPlanner() {
   function toggleAccel(a) {
     setAccels(prev => prev.includes(a) ? prev.filter(x => x !== a) : [...prev, a])
   }
+  function toggleSurface(s) {
+    setSurfaces(prev => prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s])
+  }
 
   const matches = useMemo(() => {
-    if (distances.length === 0 && accels.length === 0) return []
+    if (distances.length === 0 && accels.length === 0 && surfaces.length === 0) return []
     return TRACKS.filter(t => {
       if (distances.length && !distances.includes(t.type)) return false
       if (accels.length && !accels.includes(accelFocus(t))) return false
+      if (surfaces.length && !surfaces.includes(t.surface)) return false
       return true
     }).sort((a, b) => {
       const ai = DISTANCE_ORDER.indexOf(a.type), bi = DISTANCE_ORDER.indexOf(b.type)
       if (ai !== bi) return ai - bi
       return a.location.localeCompare(b.location)
     })
-  }, [distances, accels])
+  }, [distances, accels, surfaces])
 
   const skills = useMemo(() => topSkills(matches, 16), [matches])
   const umas = useMemo(() => topUmas(matches, 16), [matches])
 
-  const started = distances.length > 0 || accels.length > 0
+  const started = distances.length > 0 || accels.length > 0 || surfaces.length > 0
 
   const newTrackCount = useMemo(
     () => matches.filter(t => !selectedKeys.includes(trackKey(t))).length,
@@ -96,6 +101,22 @@ export default function StrategyPlanner() {
             >
               <span className="option-card-title">{o.label}</span>
               <span className="option-card-desc">{o.desc}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="board-section">
+        <h2>3. Surface</h2>
+        <p className="muted small">Narrow down to Turf, Dirt, or both.</p>
+        <div className="option-row">
+          {['Turf', 'Dirt'].map(s => (
+            <button
+              key={s}
+              className={'option-btn' + (surfaces.includes(s) ? ' active' : '')}
+              onClick={() => toggleSurface(s)}
+            >
+              {s}
             </button>
           ))}
         </div>

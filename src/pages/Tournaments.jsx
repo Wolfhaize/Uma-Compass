@@ -1,9 +1,24 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTournaments } from '../context/TournamentContext.jsx'
-import { FORMATS, POINTS_PRESETS, MIN_PLAYERS } from '../utils/tournamentEngine.js'
+import { FORMATS, POINTS_PRESETS, MIN_PLAYERS, computeStandings } from '../utils/tournamentEngine.js'
+import CopyButton from '../components/CopyButton.jsx'
+import { formatPodiumForDiscord, formatStandingsForDiscord } from '../utils/discordExport.js'
 
 const STATUS_LABEL = { setup: 'Setting up', in_progress: 'In progress', completed: 'Completed' }
+
+// For the finals-copy shortcut on a finished tournament's card: prefer the
+// Grand Final podium text, and fall back to final league standings for
+// plain leagues that never generate a bracket match.
+function getFinalsCopyText(t) {
+  const finalMatch = t.matches.find(m => m.stage === 'final' && m.status === 'completed')
+  if (finalMatch) {
+    const losersMatch = t.matches.find(m => m.stage === 'losers_final' && m.status === 'completed')
+    return formatPodiumForDiscord(t.name, finalMatch, losersMatch, t.players)
+  }
+  const standings = computeStandings(t.players, t.matches, t.settings.pointsValues, t.format === 'league' ? { stage: 'league' } : {})
+  return formatStandingsForDiscord(standings, `${t.name} — Final Standings`)
+}
 
 function CreateWizard({ onClose }) {
   const { createTournament } = useTournaments()
@@ -124,10 +139,14 @@ export default function Tournaments() {
                 <span className={'chip status-chip status-' + t.status}>{STATUS_LABEL[t.status]}</span>
               </div>
               <p className="muted small">{FORMATS[t.format]?.label} · {t.players.length} player{t.players.length !== 1 ? 's' : ''} signed up</p>
+              {t.status === 'completed' && (
+                <div className="tourney-card-copy" onClick={e => { e.preventDefault(); e.stopPropagation() }}>
+                  <CopyButton label="Copy finals" className="copy-btn-sm" getText={() => getFinalsCopyText(t)} />
+                </div>
+              )}
               <button
                 type="button"
-                className="remove-btn"
-                style={{ position: 'absolute', top: 12, right: 12 }}
+                className="remove-btn tourney-card-delete"
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); if (confirm(`Delete "${t.name}"? This can't be undone.`)) deleteTournament(t.id) }}
                 title="Delete tournament"
               >×</button>

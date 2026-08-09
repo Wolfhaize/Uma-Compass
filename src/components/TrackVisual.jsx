@@ -186,6 +186,18 @@ function GeometryVisual({ track, geometry }) {
             )
           })}
 
+        {/* 777m remaining marker: crucial accel-point reference (e.g. Oguri Cap) */}
+        {distance > 777 && (() => {
+          const rx = ((distance - 777) / distance) * 1000
+          return (
+            <g>
+              <line x1={rx} y1="0" x2={rx} y2="240" stroke="#ff5fd1" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.9" />
+              <polygon points={`${rx - 6},0 ${rx + 6},0 ${rx},10`} fill="#ff5fd1" />
+              <text x={rx} y="24" textAnchor="middle" fontSize="14" fill="#ff5fd1" fontWeight="700">777m left</text>
+            </g>
+          )
+        })()}
+
         {/* hover readout */}
         {hover !== null && (
           <g>
@@ -257,6 +269,10 @@ function FallbackVisual({ track }) {
           const p = trackPoint(-Math.max(0, Math.min(1, m.frac)), cx, cy, rx, ry, half)
           return <circle key={m.key} cx={p.x} cy={p.y} r="7" fill={m.color} stroke="var(--panel)" strokeWidth="2" />
         })}
+        {distance > 777 && (() => {
+          const p = trackPoint(-Math.max(0, Math.min(1, (distance - 777) / distance)), cx, cy, rx, ry, half)
+          return <circle cx={p.x} cy={p.y} r="7" fill="#ff5fd1" stroke="var(--panel)" strokeWidth="2" />
+        })()}
       </svg>
       <div className="track-visual-legend">
         {markers.map(m => (
@@ -265,6 +281,12 @@ function FallbackVisual({ track }) {
             {m.label}: <b>{track[m.key]}m</b>
           </div>
         ))}
+        {distance > 777 && (
+          <div className="tv-legend-item">
+            <span className="tv-dot" style={{ background: '#ff5fd1' }} />
+            777m Remaining: <b>{distance - 777}m</b>
+          </div>
+        )}
         <div className="tv-legend-item tv-legend-meta">
           {track.corners} corner{Number(track.corners) !== 1 ? 's' : ''} · {track.straights} straight{Number(track.straights) !== 1 ? 's' : ''} · {track.handed}-handed
         </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import CopyButton from '../CopyButton.jsx'
+import TopScrollSync from '../TopScrollSync.jsx'
 import { formatMatchResultForDiscord } from '../../utils/discordExport.js'
 
 const STAGE_LABEL = { knockout: 'Round', final: 'Grand Final', losers_final: 'Losers Final' }
@@ -43,6 +44,17 @@ function MatchCard({ match, players, onOpen, canEdit }) {
   )
 }
 
+// Labels the final knockout rounds by proximity to the end (Finals,
+// Semifinals, Quarterfinals) instead of just "Round N", so it's obvious
+// at a glance which round decides the tournament.
+function roundLabel(r, idxFromEnd, hasFinalStage) {
+  if (hasFinalStage) return 'Grand Final'
+  if (idxFromEnd === 0) return `Round ${r} — Finals`
+  if (idxFromEnd === 1) return `Round ${r} — Semifinals`
+  if (idxFromEnd === 2) return `Round ${r} — Quarterfinals`
+  return `Round ${r}`
+}
+
 export default function BracketView({ matches, players, onOpenMatch, canEdit = true }) {
   const bracketMatches = matches.filter(m => ['knockout', 'final', 'losers_final'].includes(m.stage))
   const rounds = [...new Set(bracketMatches.map(m => m.round))].sort((a, b) => a - b)
@@ -50,16 +62,17 @@ export default function BracketView({ matches, players, onOpenMatch, canEdit = t
   if (!bracketMatches.length) return <p className="muted small">No bracket generated yet.</p>
 
   return (
-    <div className="bracket-scroll">
+    <TopScrollSync className="bracket-scroll">
       <div className="bracket-tree">
-        {rounds.map(r => {
+        {rounds.map((r, idx) => {
           const roundMatches = bracketMatches.filter(m => m.round === r)
           const mainMatches = roundMatches.filter(m => m.stage !== 'losers_final')
           const losersMatch = roundMatches.filter(m => m.stage === 'losers_final')
+          const idxFromEnd = rounds.length - 1 - idx
           return (
             <div className="bracket-round" key={r}>
               <div className="bracket-round-label">
-                {mainMatches.some(m => m.stage === 'final') ? 'Grand Final' : `Round ${r}`}
+                {roundLabel(r, idxFromEnd, mainMatches.some(m => m.stage === 'final'))}
               </div>
               <div className="bracket-round-matches">
                 {mainMatches.map(m => (
@@ -76,6 +89,6 @@ export default function BracketView({ matches, players, onOpenMatch, canEdit = t
           )
         })}
       </div>
-    </div>
+    </TopScrollSync>
   )
 }

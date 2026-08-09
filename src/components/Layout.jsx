@@ -17,7 +17,9 @@ export default function Layout() {
       <a href="#main-content" className="skip-link">Skip to content</a>
       <nav className="site-nav" aria-label="Main navigation">
         <div className="site-nav-inner">
-          <Link to="/" className="site-title">Uma Compass</Link>
+          <Link to="/" className="site-title">
+            <img src="/tazuna-modified.png" alt="Uma Compass Logo" className="site-logo" />
+          Uma Compass</Link>
           <div className="nav-links">
             {NAV_ITEMS.map(item => (
               <NavLink

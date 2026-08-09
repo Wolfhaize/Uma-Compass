@@ -1,0 +1,584 @@
+[
+  {
+    "name": "Corner Adept ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Track != Niigata 1000 Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Straightaway Adept",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s - Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Ramp Up",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Midrace, Overtake",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Homestretch Haste",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s - Last Spurt",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Fast-Paced",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Front Midrace, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Prepared to Pass",
+    "effectAndCondition": "Increase Targe Speed 0.15 for 1.8s Style = Pace Final Corner, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Position Pilfer",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Style = Late Midrace, Back half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Outer Swell",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Late Final Corner, Behind, Changing order",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Masterful Gambit",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = End Laterace, Back half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Gap Closer",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s, Acceleration + 0.05 Distance = Sprint Laterace, Back half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Productive Plan",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Mile Early Race, Front half of pack, 5 secs past",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Up-Tempo",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Medium Midrace, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Steadfast",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s, Acceleration + 0.05 Distance = Medium Final corner, Passed by another runner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Inside Scoop",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Long Final Corner, Inner Lane",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Sprint Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Sprint Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Sprint Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Sprint Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Sprint Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Sprint Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Sprint Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Sprint Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Huge Lead",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Sprint Midrace, 1st, Leading by >= 3 Lengths",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Mile Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Mile Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Mile Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Mile Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Mile Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Mile Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Mile Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Mile Random Corner",
+    "rarity": "Normal"
+
+  },
+  {
+    "name": "Shifting Gears",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Mile Midrace, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Unyielding Spirit",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Mile 5 secs past, Overtake",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Medium Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Medium Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Medium Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Medium Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Medium Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Medium Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Medium Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Medium Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Long Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Long Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Long Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Long Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Long Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Distance = Long Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Long Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Long Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Keeping the Lead",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Long Midrace, 1st, Leading by >= 1 Lengths",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Pressure",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Distance = Long Laterace, Overtake",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Front Runner Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Front Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Front Runner Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Front Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Front Runner Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Front Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Front Runner Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Front Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Leader's Pride",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Front Early or midrace, Blocked / Overtaken",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Pace Chaser Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Pace Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Pace Chaser Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Pace Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Pace Chaser Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Pace Random Corner",
+    "rarity": "Normal"
+
+  },
+  {
+    "name": "Pace Chaser Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Pace Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Late Surger Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Late Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Late Surger Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Late Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Late Surger Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = Late Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Late Surger Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Late Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "1,500,000 CC",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = Late Random Uphill",
+    "rarity": "Normal"
+  },
+  {
+    "name": "End Closer Straightaways ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = End Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "End Closer Straightaways ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = End Random Straight",
+    "rarity": "Normal"
+  },
+  {
+    "name": "End Closer Corners ◎",
+    "effectAndCondition": "Increase Target Speed 0.25 for 3s Style = End Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "End Closer Corners ○",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s Style = End Random Corner",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Uma Stan",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s - Near 3 runners",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Tail Held High",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s - Midrace, Activate 3 or more skills",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Slipstream",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s - 30 sec CD, 10 secs past, Uma in front 3 secs",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Playtime's Over!",
+    "effectAndCondition": "Increase Target Speed 0.15 for 3s - 30 sec CD, 10 secs past, Followed 3 secs",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Top Pick",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Condition = Dirt Midrace, Side blocked 2 secs",
+    "rarity": "Normal"
+  },
+  {
+    "name": "All I've Got",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Medium Last Spurt, Straight, Order 2-6",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Feature Act",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Long Second half of midrace, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Early Start",
+    "effectAndCondition": "Increase Target Speed 0.05 for 4s Style = End Midrace, Back half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Risky Business",
+    "effectAndCondition": "Increase Target Speed 0.25 for 1.8s, Random Stamina Drain (Base -1%) - Second half of race",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Light as a Feather",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Sprint Approaching laterace, Front half of pack",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Fighting Spirit",
+    "effectAndCondition": "Increase Target Speed 0.15 for 1.8s, Stamina Recovery 0.5% Distance = Medium Midrace, Order 4-7, Side blocked 2 secs",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Eager",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s Distance = Medium Midrace, Back half of pack ",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Pumped",
+    "effectAndCondition": "Increase Target Speed 0.15 for 1.8s Distance = Mile Final corner, Back half of pack",
+    "rarity": "Normal"
+
+  },
+  {
+    "name": "Fearless ",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s, Acceleration +0.05 Style = Late Second half or race, Order 3-8",
+    "rarity": "Normal"
+  },
+  {
+    "name": "With All My Soul ",
+    "effectAndCondition": "Increase Target Speed 0.15 for 1.8s, Decrease current speed of 5 closest umas behind 0.035 for 1.8s Distance = Medium Midrace, Order 1-3",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Full Throttle ",
+    "effectAndCondition": "Increase Target Speed 0.25 for 2.4s, Stamina drain -2% Style = Late Midrace",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Downhill Speedster ",
+    "effectAndCondition": "Increase Target Speed 0.15 for 2.4s - Random Downhill",
+    "rarity": "Normal"
+  },
+  {
+    "name": "Professor of Curvature",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Track != Niigata 1000 Random Corner",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Beeline Burst",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s - Random Straight",
+    "rarity": "Rare"
+  },
+  {
+    "name": "It's On!",
+    "effectAndCondition": "Increase Target Speed 0.35 for 1.8s - Midrace, Passing, 30 sec CD",
+    "rarity": "Rare"
+  },
+  {
+    "name": "In Body and Mind",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s - Last Spurt",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Escape Artist",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Style = Front Midrace, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Speed Star",
+    "effectAndCondition": "Increase Target Speed 0.35 for 1.8s Style = Pace Final Corner, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Fast & Furious",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Style = Late Midrace, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Rising Dragon",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Style = Late Final Corner, Behind, Changing order",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Sturm und Drang",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Style = End Laterace, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Blinding Flash",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s, Acceleration +0.1 Distance = Sprint Laterace, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Mile Maven",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Mile Early Race, Front half of pack, 5 secs past",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Killer Tunes",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Distance = Medium Midrace, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Unyielding",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s, Acceleration +0.1 Distance = Medium Final corner, Passed by another runner",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Innate Experience",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Long Final Corner, Inner Lane",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Staggering Lead",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Sprint Midrace, 1st, Leading by >= 3 Lengths",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Changing Gears",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Distance = Mile Midrace, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Big Sisterly",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Distance = Mile 5 secs past, Overtake",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Vanguard Spirit",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Long Midrace, 1st, Leading by >= 1 Lengths",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Overwhelming Pressure",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Long Laterace, Overtake",
+    "rarity": "Rare"
+  },
+  {
+    "name": "15,000,000 CC",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Style = Late Random Uphill",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Trending in the Charts!",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Condition = Dirt Midrace, Side blocked 2 secs",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Superstan",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s - Near 3 runners",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Come What May",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Distance = Medium Last Spurt, Straight, Order 2-6",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Tail Nine",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s - Midrace, Activate 3 or more skills",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Dream Run ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 5s - Beyond Final Corner",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Headliner",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Long Second half of midrace, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Daring Strike",
+    "effectAndCondition": "Increase Target Speed 0.25 for 4s Style = End Midrace, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Nothing Ventured",
+    "effectAndCondition": "Increase Target Speed 0.45 for 1.8s, Random Stamina Drain (Base -1%) - Second half of race",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Flash Forward",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Medium Random Straight",
+    "rarity": "Rare"
+  },
+  {
+    "name": "In High Spirits",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s Distance = Sprint Approaching laterace, Front half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Blast Forward",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Long Random Straight",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Top Runner",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Style = Front Early or midrace, Blocked / Overtaken",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Burning Soul",
+    "effectAndCondition": "Increase Target Speed 0.35 for 1.8s, Stamina Recovery 2.5% Distance = Medium Midrace, Order 4-7, Side blocked 2 secs",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Elated ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Medium Midrace, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Full of Vigor ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 1.8s Distance = Mile Final corner, Back half of pack",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Dauntless ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 2.4s, Acceleration +0.1 Style = Late Second half or race, Order 3-8",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Wild Wind ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 1.8s, Decrease current speed of 5 closest umas behind 0.15 for 1.8s Distance = Medium Midrace, Order 1-3",
+    "rarity": "Rare"
+  },
+  {
+    "name": "See Ya Later! ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s - 30 sec CD, 10 secs past, Followed 3 secs",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Keep Going! ",
+    "effectAndCondition": "Increase Target Speed 0.45 for 2.4s, Stamina drain -2% Style = Late Midrace",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Moonlit Flash ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Style = End Random Straight",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Refraction Arc ",
+    "effectAndCondition": "Increase Target Speed 0.35 for 3s Distance = Medium Random Corner",
+    "rarity": "Rare"
+  },
+  {
+    "name": "Corner Adept ×",
+    "effectAndCondition": "Decrease Current Speed -0.2 for 2.4s - Random Corner",
+    "rarity": "Normal",
+    "access": "Purple"
+  },
+  {
+    "name": "Defeatist",
+    "effectAndCondition": "Decrease Current Speed -0.2 for 3s - 30 sec CD, Final Straight, Positioned at least 75% in the back",
+    "rarity": "Normal",
+    "access": "Purple"
+  },
+  {
+    "name": "Reckless",
+    "effectAndCondition": "Decrease Current Speed -0.2 for 3s - 30 sec CD, 1st, 200m left",
+    "rarity": "Normal",
+    "access": "Purple"
+  },
+  {
+    "name": "Blatant Fear",
+    "effectAndCondition": "Decrease Current Speed -0.3 for 5s - 800-850m left",
+    "rarity": "Normal",
+    "access": "Purple"
+  }
+]

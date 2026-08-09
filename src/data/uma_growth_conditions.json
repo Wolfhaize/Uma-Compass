@@ -1,0 +1,740 @@
+{
+  "Admire Vega": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Power": 20
+      },
+      "condition": "First is Min 5m Away"
+    }
+  ],
+  "Agnes Digital": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 8,
+        "Stam": 8,
+        "Power": 7,
+        "Wit": 7
+      },
+      "condition": "Overtake 2 - Late Race/Spurt"
+    }
+  ],
+  "Agnes Tachyon": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Guts": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Air Groove": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Power": 20
+      },
+      "condition": "Attempt Overtake"
+    },
+    {
+      "variant": "Wedding",
+      "growth": {
+        "Speed": 10,
+        "Power": 10,
+        "Guts": 10
+      },
+      "condition": "Attempt Overtake"
+    }
+  ],
+  "Biwa Hayahide": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Guts": 10,
+        "Wit": 20
+      },
+      "condition": "Attempt Overtake"
+    },
+    {
+      "variant": "Christmas",
+      "growth": {
+        "Stam": 12,
+        "Power": 12,
+        "Wit": 6
+      },
+      "condition": "Staying in Position For 50% of Race"
+    }
+  ],
+  "Curren Chan": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Power": 20
+      },
+      "condition": "Attempt Overtake"
+    }
+  ],
+  "Daiwa Scarlet": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Guts": 20
+      },
+      "condition": "Attempt Overtake Uma Behind"
+    }
+  ],
+  "Eishin Flash": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 10,
+        "Wit": 20
+      },
+      "condition": "No Late Start or Rushed"
+    },
+    {
+      "variant": "Valentine",
+      "growth": {
+        "Stam": 8,
+        "Power": 8,
+        "Wit": 14
+      },
+      "condition": "Overtake 3 - Final Corner or Later"
+    }
+  ],
+  "El Condor Pasa": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Wit": 10
+      },
+      "condition": "More Than 30% Stam"
+    },
+    {
+      "variant": "Fantasy",
+      "growth": {
+        "Speed": 15,
+        "Guts": 15
+      },
+      "condition": "Attempt Overtake"
+    }
+  ],
+  "Fine Motion": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 15,
+        "Wit": 15
+      },
+      "condition": "Side Blocked 2s"
+    }
+  ],
+  "Fuji Kiseki": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Wit": 10
+      },
+      "condition": "Uma Behind 1s"
+    },
+    {
+      "variant": "Ballroom",
+      "growth": {
+        "Speed": 8,
+        "Power": 14,
+        "Wit": 8
+      },
+      "condition": "Overtake 1"
+    }
+  ],
+  "Gold City": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 10,
+        "Guts": 20
+      },
+      "condition": "Attempt Overtake"
+    },
+    {
+      "variant": "Fesitval",
+      "growth": {
+        "Speed": 8,
+        "Power": 8,
+        "Wit": 14
+      },
+      "condition": "Side Blocked 2s"
+    }
+  ],
+  "Gold Ship": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Power": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Grass Wonder": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Power": 10
+      },
+      "condition": "Attempt Overtake"
+    },
+    {
+      "variant": "Fantasy",
+      "growth": {
+        "Stam": 15,
+        "Wit": 15
+      },
+      "condition": ""
+    }
+  ],
+  "Haru Urara": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 10,
+        "Guts": 20
+      },
+      "condition": ""
+    },
+    {
+      "variant": "New Year",
+      "growth": {
+        "Power": 20,
+        "Guts": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Hishi Akebono": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Guts": 10
+      },
+      "condition": "Less Than 70% Stam"
+    }
+  ],
+  "Hishi Amazon": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Guts": 10
+      },
+      "condition": "Attempt Overtake"
+    }
+  ],
+  "Kawakami Princess": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 10,
+        "Guts": 20
+      },
+      "condition": "Side Blocked 2s - Final Straight"
+    }
+  ],
+  "King Halo": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Guts": 10
+      },
+      "condition": "No Late Start or Rushed"
+    }
+  ],
+  "Kitasan Black": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Stam": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Manhattan Cafe": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 30
+      },
+      "condition": ""
+    }
+  ],
+  "Maruzensky": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Wit": 20
+      },
+      "condition": ""
+    },
+    {
+      "variant": "Summer",
+      "growth": {
+        "Speed": 15,
+        "Wit": 15
+      },
+      "condition": "Used One Recovery"
+    }
+  ],
+  "Matikanefukukitaru": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Power": 10
+      },
+      "condition": "Blocked Front"
+    },
+    {
+      "variant": "Full Armor",
+      "growth": {
+        "Guts": 10,
+        "Wit": 10
+      },
+      "condition": "Being Overtaken 2s"
+    }
+  ],
+  "Matikanetannhauser": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Guts": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Mayano Top Gun": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Guts": 10
+      },
+      "condition": "Side Blocked 2s"
+    },
+    {
+      "variant": "Wedding",
+      "growth": {
+        "Speed": 10,
+        "Stam": 10,
+        "Wit": 10
+      },
+      "condition": "(a) Accel 0.4 (b) 4s (b) Overtake 1"
+    }
+  ],
+  "Meisho Doto": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Guts": 10
+      },
+      "condition": "Overtake 1"
+    }
+  ],
+  "Mejiro Ardan": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Wit": 20
+      },
+      "condition": "Uma Behind - Final Straight"
+    }
+  ],
+  "Mejiro Bright": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 14,
+        "Guts": 8,
+        "Wit": 8
+      },
+      "condition": ""
+    }
+  ],
+  "Mejiro Dober": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Wit": 20
+      },
+      "condition": ""
+    }
+  ],
+  "Mejiro McQueen": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Wit": 10
+      },
+      "condition": "Distance From First is No Greater Than 30% - Final Corner"
+    },
+    {
+      "variant": "Anime",
+      "growth": {
+        "Stam": 10,
+        "Power": 10,
+        "Wit": 10
+      },
+      "condition": "Uma 1L Behind Less Than 45% Stam Attempt Overtake"
+    }
+  ],
+  "Mejiro Ryan": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Wit": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Mihono Bourbon": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Power": 10
+      },
+      "condition": "No Late Start or Rushed"
+    },
+    {
+      "variant": "Valentine",
+      "growth": {
+        "Speed": 10,
+        "Stam": 10,
+        "Power": 10
+      },
+      "condition": "Uma 3L Behind"
+    }
+  ],
+  "Narita Brian": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Stam": 20
+      },
+      "condition": "Side Blocked 2s (a)"
+    }
+  ],
+  "Narita Taishin": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Guts": 20
+      },
+      "condition": "Attempt Overtake"
+    }
+  ],
+  "Nice Nature": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Wit": 10
+      },
+      "condition": "Uma 1L Behind 33"
+    }
+  ],
+  "Nishino Flower": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 15,
+        "Power": 15
+      },
+      "condition": "Side Blocked 2s During Mid Race Corner"
+    }
+  ],
+  "Oguri Cap": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Power": 10
+      },
+      "condition": ""
+    },
+    {
+      "variant": "Christmas",
+      "growth": {
+        "Speed": 15,
+        "Stam": 15
+      },
+      "condition": "Activate 3 Recoveries - After 50%"
+    }
+  ],
+  "Rice Shower": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 10,
+        "Guts": 20
+      },
+      "condition": "Overtake on Final Corner"
+    },
+    {
+      "variant": "Halloween",
+      "growth": {
+        "Stam": 15,
+        "Power": 15
+      },
+      "condition": ""
+    }
+  ],
+  "Sakura Bakushin O": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Wit": 10
+      },
+      "condition": "Side Blocked 2s"
+    }
+  ],
+  "Sakura Chiyono O": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Guts": 10,
+        "Wit": 10
+      },
+      "condition": "Uma 1L in Front"
+    }
+  ],
+  "Satono Diamond": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 15,
+        "Wit": 15
+      },
+      "condition": "Distance From First Less Than 5L (a) Distance From First More Than 5L (b)"
+    }
+  ],
+  "Seiun Sky": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 10,
+        "Wit": 20
+      },
+      "condition": "11"
+    },
+    {
+      "variant": "Ballroom",
+      "growth": {
+        "Speed": 8,
+        "Power": 8,
+        "Guts": 14
+      },
+      "condition": "Straight Must Be Opposite From Audience (a)"
+    }
+  ],
+  "Silence Suzuka": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Guts": 10
+      },
+      "condition": "Uma 1L Behind 11"
+    }
+  ],
+  "Smart Falcon": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Power": 10
+      },
+      "condition": "Uma 1L Behind"
+    }
+  ],
+  "Special Week": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Wit": 10
+      },
+      "condition": "Overtake 1"
+    },
+    {
+      "variant": "Summer",
+      "growth": {
+        "Stam": 10,
+        "Power": 10,
+        "Guts": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Super Creek": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 10,
+        "Wit": 20
+      },
+      "condition": ""
+    },
+    {
+      "variant": "Halloween",
+      "growth": {
+        "Speed": 14,
+        "Stam": 8,
+        "Guts": 8
+      },
+      "condition": "Uma 1L in Front"
+    }
+  ],
+  "Symboli Rudolf": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Guts": 10
+      },
+      "condition": "Overtake 3 - Final Straight"
+    },
+    {
+      "variant": "Festival",
+      "growth": {
+        "Speed": 8,
+        "Stam": 14,
+        "Wit": 8
+      },
+      "condition": "Being Overtaken 2s"
+    }
+  ],
+  "Taiki Shuttle": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Wit": 10
+      },
+      "condition": ""
+    }
+  ],
+  "Tamamo Cross": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Wit": 10
+      },
+      "condition": "Attempt Overtake (a)"
+    }
+  ],
+  "TM Opera O": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 20,
+        "Wit": 10
+      },
+      "condition": "Uma 1L in Front or Behind"
+    }
+  ],
+  "Tm Opera O": [
+    {
+      "variant": "New Year",
+      "growth": {
+        "Speed": 14,
+        "Stam": 8,
+        "Wit": 8
+      },
+      "condition": "Activate 7 Skills (a) Activate 6 Skills (b)"
+    }
+  ],
+  "Tokai Teio": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 20,
+        "Stam": 10
+      },
+      "condition": "Uma 1L in Front Attempt Overtake"
+    },
+    {
+      "variant": "Anime",
+      "growth": {
+        "Speed": 10,
+        "Stam": 10,
+        "Guts": 10
+      },
+      "condition": "Attempting Overtake 2s"
+    }
+  ],
+  "Tosen Jordan": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Power": 10,
+        "Guts": 10
+      },
+      "condition": "Being Overtaken 2s Attempting Overtake"
+    }
+  ],
+  "Vodka": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Speed": 10,
+        "Power": 20
+      },
+      "condition": "Uma 1L in Front or Behind"
+    }
+  ],
+  "Winning Ticket": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Stam": 10,
+        "Power": 20
+      },
+      "condition": "Blocked Side 2s Final Corner or Later"
+    }
+  ],
+  "Yaeno Muteki": [
+    {
+      "variant": "Base",
+      "growth": {
+        "Power": 20,
+        "Guts": 10
+      },
+      "condition": "Overtake 1 During Final Corner"
+    }
+  ]
+}

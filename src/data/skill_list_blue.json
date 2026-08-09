@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Swinging Maestro",
+    "effectAndCondition": "Stamina Recovery 5.5% Track != Niigata 1000 Random Corner",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Corner Recovery ○",
+    "effectAndCondition": "Stamina Recovery 1.5% Track != Niigata 1000 Random Corner",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Corner Recovery ×",
+    "effectAndCondition": "Stamina Drain -2% Track != Niigata 1000 Random Corner",
+    "rarity": "Normal",
+    "access": "Purple"
+  },
+  {
+    "name": "Breath of Fresh Air",
+    "effectAndCondition": "Stamina Recovery 5.5% - Mid Race Straight",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Straightaway Recovery",
+    "effectAndCondition": "Stamina Recovery 1.5% - Mid Race Straight",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Iron Will",
+    "effectAndCondition": "Stamina Recovery 5.5% - Early Race, Blocked 1 sec, 5 sec into race",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Lay Low",
+    "effectAndCondition": "Stamina Recovery 1.5% - Early Race, Blocked 1 sec, 5 sec into race",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Indomitable",
+    "effectAndCondition": "Stamina Recovery 5.5% - Midrace, Passed",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Pace Strategy",
+    "effectAndCondition": "Stamina Recovery 1.5% - Midrace, Passed",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Unruffled",
+    "effectAndCondition": "Stamina Recovery 5.5% - Midrace, Surrounded",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Calm in a Crowd",
+    "effectAndCondition": "Stamina Recovery 1.5% - Midrace, Surrounded",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Running Idle",
+    "effectAndCondition": "Stamina Drain -2% - 1st, Leading by >= 2 lengths",
+    "rarity": "Normal",
+    "access": "Purple"
+  },
+  {
+    "name": "Calm and Collected",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Pace 2nd half earlyrace, Front half of the pack",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Stamina to Spare",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Pace 2nd half earlyrace, Front half of the pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Race Planner",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Pace Midrace. Front half of the pack",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Preferred Position",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Pace Midrace. Front half of the pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Sleeping Lion",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = End 75% distance behind 1st",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Standing By",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = End 75% distance behind 1st",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Wait-and-See",
+    "effectAndCondition": "Stamina Recovery 1.5%, Acceleration +0.1 Distance = Sprint Mirdace. Back 50% of pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Keen Eye",
+    "effectAndCondition": "Stamina Recovery 5.5%, Current Speed -0.2 Umas Ahead Distance = Mile Laterace, Back 50% of pack",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Watchful Eye",
+    "effectAndCondition": "Stamina Recovery 1.5%, current speed -0.05 umas ahead Distance = Mile Laterace, Back 50% of pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Trackblazer",
+    "effectAndCondition": "Stamina Recovery 5.5% Distance = Medium Mirdace, Position = 1-3",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Rosy Outlook",
+    "effectAndCondition": "Stamina Recovery 1.5% Distance = Medium Mirdace, Position = 1-3",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Cooldown",
+    "effectAndCondition": "Stamina Recovery 5.5% Distance = Long Random Straight",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Deep Breaths",
+    "effectAndCondition": "Stamina Recovery 1.5% Distance = Long Random Straight",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Adrenaline Rush",
+    "effectAndCondition": "Stamina Recovery 5.5% Distance = Long HP under 30%",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Extra Tank",
+    "effectAndCondition": "Stamina Recovery 1.5% Distance = Long HP under 30%",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Miraculous Step",
+    "effectAndCondition": "Stamina Recovery 5.5% Distance = Medium 10 secs past, Move left or right",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Soft Step",
+    "effectAndCondition": "Stamina Recovery 1.5% Distance = Medium 10 secs past, Move left or right",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Passing Pro",
+    "effectAndCondition": "Stamina Recovery 1.5% Distance = Long 5 secs past, overtake",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Restless",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Front 10 secs past, Uphill",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Moxie",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Front 10 secs past, Uphill",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Gourmand",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Pace Midrace",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Hydrate",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Pace Midrace",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Relax",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Late Laterace",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "A Small Breather",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Late Laterace",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Go-Home Specialist",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = End 10 secs past, Downhill",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "After-School Stroll",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = End 10 secs past, Downhill",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Serenity",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = End 10 secs past, Blocked",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Levelheaded",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = End 10 secs past, Blocked",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Triple 7s",
+    "effectAndCondition": "Stamina Recovery 1.5% - 777 Meters remaining",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Shake It Out",
+    "effectAndCondition": "Stamina Recovery 1.5% - 3 skills activated late race",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Lie in Wait",
+    "effectAndCondition": "Stamina Recovery 5.5% Style = Late Approaching midrace, Back half of pack",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Be Still",
+    "effectAndCondition": "Stamina Recovery 1.5% Style = Late Approaching midrace, Back half of pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "VIP Pass",
+    "effectAndCondition": "Stamina Recovery 5.5% Distance = Long 5 secs past, Overtake",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Familiar Ground",
+    "effectAndCondition": "Stamina Recovery 1.5% Condition = Dirt Midrace, Back half of pack",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Of Calm Mind",
+    "effectAndCondition": "Stamina Recovery 7.5%, Current Speed -0.15 Distance = Long Order 40%-80%, Start of midrace",
+    "rarity": "Rare",
+    "access": "Blue"
+  },
+  {
+    "name": "Free-Spirited",
+    "effectAndCondition": "Stamina Recovery 3.5%, Current Speed -0.15 Distance = Long Order 40%-80%, Start of midrace",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Ignited Spirit STA",
+    "effectAndCondition": "Stamina Recovery Base 1.5%, Scaling Increase on Team Stam w/o Greens - Midrace",
+    "rarity": "Normal",
+    "access": "Blue"
+  },
+  {
+    "name": "Burning Spirit STA",
+    "effectAndCondition": "Stamina Recovery Base 5.5%, Scaling Increase on Team Stam w/o Greens - Midrace",
+    "rarity": "Rare",
+    "access": "Blue"
+  }
+]

@@ -1,0 +1,1559 @@
+[
+  {
+    "id": "100101",
+    "charId": "1001",
+    "name": "Special Week",
+    "outfit": "[Special Dreamer]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 100011,
+      "name": "Shooting for Victory!",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100102",
+    "charId": "1001",
+    "name": "Special Week",
+    "outfit": "[Hopp'n♪Happy Heart]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 120011,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "100201",
+    "charId": "1002",
+    "name": "Silence Suzuka",
+    "outfit": "[Innocent Silence]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "C",
+      "late": "E",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100021,
+      "name": "Angling and Scheming",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100301",
+    "charId": "1003",
+    "name": "Tokai Teio",
+    "outfit": "[Peak Joy]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "E",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "C",
+      "end": "E"
+    },
+    "unique": {
+      "id": 100031,
+      "name": "Blue Rose Closer",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100302",
+    "charId": "1003",
+    "name": "Tokai Teio",
+    "outfit": "[Beyond the Horizon]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "E",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "C",
+      "end": "E"
+    },
+    "unique": {
+      "id": 110031,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "100401",
+    "charId": "1004",
+    "name": "Maruzensky",
+    "outfit": "[Formula R]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distances": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "E",
+      "late": "G",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100041,
+      "name": "KEEP IT REAL.",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100402",
+    "charId": "1004",
+    "name": "Maruzensky",
+    "outfit": "[Hot☆Summer Night]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distances": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "E",
+      "late": "G",
+      "end": "G"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "100501",
+    "charId": "1005",
+    "name": "Fuji Kiseki",
+    "outfit": "[Shooting Star Revue]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "E"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "A",
+      "late": "C",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100051,
+      "name": "Nemesis",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100601",
+    "charId": "1006",
+    "name": "Oguri Cap",
+    "outfit": "[Starlight Beat]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "D"
+    },
+    "unique": {
+      "id": 100061,
+      "name": "Just a Little Farther!",
+      "triggerStyle": [
+        "pace",
+        "late"
+      ]
+    }
+  },
+  {
+    "id": "100701",
+    "charId": "1007",
+    "name": "Gold Ship",
+    "outfit": "[Red Strife]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "B",
+      "end": "A"
+    },
+    "unique": {
+      "id": 10071,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "100801",
+    "charId": "1008",
+    "name": "Vodka",
+    "outfit": "[Wild Top Gear]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "B",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 10081,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "100901",
+    "charId": "1009",
+    "name": "Daiwa Scarlet",
+    "outfit": "[Peak Blue]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "A",
+      "late": "E",
+      "end": "G"
+    },
+    "unique": {
+      "id": 10091,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101001",
+    "charId": "1010",
+    "name": "Taiki Shuttle",
+    "outfit": "[Wild Frontier]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "A",
+      "late": "E",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100101,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101101",
+    "charId": "1011",
+    "name": "Grass Wonder",
+    "outfit": "[Stone-Piercing Blue]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "A",
+      "medium": "B",
+      "long": "A"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 10111,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101102",
+    "charId": "1011",
+    "name": "Grass Wonder",
+    "outfit": "[Saintly Jade Cleric ]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "A",
+      "medium": "B",
+      "long": "A"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 120111,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101201",
+    "charId": "1012",
+    "name": "Hishi Amazon",
+    "outfit": "[Azure Amazon]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "C",
+      "end": "A"
+    },
+    "unique": {
+      "id": 100121,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101301",
+    "charId": "1013",
+    "name": "Mejiro McQueen",
+    "outfit": "[Frontline Elegance]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "D",
+      "end": "F"
+    },
+    "unique": {
+      "id": 100131,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101302",
+    "charId": "1013",
+    "name": "Mejiro McQueen",
+    "outfit": "[End of the Skies]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "D",
+      "end": "F"
+    },
+    "unique": {
+      "id": 110131,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101401",
+    "charId": "1014",
+    "name": "El Condor Pasa",
+    "outfit": "[El☆Número 1]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "E",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 10141,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101402",
+    "charId": "1014",
+    "name": "El Condor Pasa",
+    "outfit": "[Kukulkan Warrior]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "E",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101501",
+    "charId": "1015",
+    "name": "T.M. Opera O",
+    "outfit": "[O Sole Suo!]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "A",
+      "late": "A",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100151,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101601",
+    "charId": "1016",
+    "name": "Narita Brian",
+    "outfit": "[Maverick]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "A",
+      "late": "A",
+      "end": "D"
+    },
+    "unique": {
+      "id": 100161,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101701",
+    "charId": "1017",
+    "name": "Symboli Rudolf",
+    "outfit": "[Emperor's Path]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 100171,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101702",
+    "charId": "1017",
+    "name": "Symboli Rudolf",
+    "outfit": "[Archer by Moonlight]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101801",
+    "charId": "1018",
+    "name": "Air Groove",
+    "outfit": "[Empress Road]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "E"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "A",
+      "end": "G"
+    },
+    "unique": {
+      "id": 10181,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101802",
+    "charId": "1018",
+    "name": "Air Groove",
+    "outfit": "[Quercus Civilis]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "E"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "A",
+      "end": "G"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "101901",
+    "charId": "1019",
+    "name": "Agnes Digital",
+    "outfit": "[Full-Color Fangirling]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "A"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "A",
+      "late": "A",
+      "end": "B"
+    },
+    "unique": {
+      "id": 100191,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102001",
+    "charId": "1020",
+    "name": "Seiun Sky",
+    "outfit": "[Reeling in the Big One]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "B",
+      "late": "D",
+      "end": "E"
+    },
+    "unique": {
+      "id": 100201,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102301",
+    "charId": "1023",
+    "name": "Biwa Hayahide",
+    "outfit": "[pf. Winning Equation...]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "E",
+      "pace": "A",
+      "late": "B",
+      "end": "E"
+    },
+    "unique": {
+      "id": 100231,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102401",
+    "charId": "1024",
+    "name": "Mayano Top Gun",
+    "outfit": "[Scramble☆Zone]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "D",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "A",
+      "late": "B",
+      "end": "B"
+    },
+    "unique": {
+      "id": 10241,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102402",
+    "charId": "1024",
+    "name": "Mayano Top Gun",
+    "outfit": "[Sunlight Bouquet]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "D",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "A",
+      "late": "B",
+      "end": "B"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102501",
+    "charId": "1025",
+    "name": "Manhattan Cafe",
+    "outfit": "[Creeping Shadow]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "C",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 100251,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102601",
+    "charId": "1026",
+    "name": "Mihono Bourbon",
+    "outfit": "[MB-19890425]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "E",
+      "late": "G",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100261,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102701",
+    "charId": "1027",
+    "name": "Mejiro Ryan",
+    "outfit": "[Down the Line]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 10271,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "102801",
+    "charId": "1028",
+    "name": "Hishi Akebono",
+    "outfit": "[Buono ☆ Alla Moda]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "B",
+      "medium": "F",
+      "long": "G"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "C",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100281,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103001",
+    "charId": "1030",
+    "name": "Rice Shower",
+    "outfit": "[Rosy Dreams]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "C",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100301,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103002",
+    "charId": "1030",
+    "name": "Rice Shower",
+    "outfit": "[Vampire Makeover!]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "C",
+      "end": "G"
+    },
+    "unique": {
+      "id": 120301,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103201",
+    "charId": "1032",
+    "name": "Agnes Tachyon",
+    "outfit": "[tach-nology]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "E",
+      "pace": "A",
+      "late": "B",
+      "end": "F"
+    },
+    "unique": {
+      "id": 10321,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103501",
+    "charId": "1035",
+    "name": "Winning Ticket",
+    "outfit": "[Get to Winning!]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "A",
+      "end": "G"
+    },
+    "unique": {
+      "id": 10351,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103701",
+    "charId": "1037",
+    "name": "Eishin Flash",
+    "outfit": "[Meisterschaft]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "A",
+      "end": "C"
+    },
+    "unique": {
+      "id": 100371,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103801",
+    "charId": "1038",
+    "name": "Curren Chan",
+    "outfit": "[Fille Éclair]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "D",
+      "medium": "G",
+      "long": "G"
+    },
+    "styles": {
+      "front": "B",
+      "pace": "A",
+      "late": "E",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100381,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "103901",
+    "charId": "1039",
+    "name": "Kawakami Princess",
+    "outfit": "[Princess of Pink]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "D",
+      "mile": "B",
+      "medium": "A",
+      "long": "F"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "C",
+      "late": "A",
+      "end": "D"
+    },
+    "unique": {
+      "id": 100391,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104001",
+    "charId": "1040",
+    "name": "Gold City",
+    "outfit": "[Authentic / 1928]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "B",
+      "long": "B"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 100401,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104002",
+    "charId": "1040",
+    "name": "Gold City",
+    "outfit": "[Autumn Cosmos]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "A",
+      "medium": "B",
+      "long": "B"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 120401,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104101",
+    "charId": "1041",
+    "name": "Sakura Bakushin O",
+    "outfit": "[Blossom in Learning]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "A",
+      "late": "F",
+      "end": "G"
+    },
+    "unique": {
+      "id": 10411,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104501",
+    "charId": "1045",
+    "name": "Super Creek",
+    "outfit": "[Murmuring Stream]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "B",
+      "end": "G"
+    },
+    "unique": {
+      "id": 10451,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104502",
+    "charId": "1045",
+    "name": "Super Creek",
+    "outfit": "[Chiffon-Wrapped Mummy]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "D",
+      "pace": "A",
+      "late": "B",
+      "end": "G"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104601",
+    "charId": "1046",
+    "name": "Smart Falcon",
+    "outfit": "[LOVE☆4EVER]",
+    "surfaces": {
+      "turf": "E",
+      "dirt": "A"
+    },
+    "distances": {
+      "short": "B",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "styles": {
+      "front": "A",
+      "pace": "D",
+      "late": "G",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100461,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "104801",
+    "charId": "1048",
+    "name": "Tosen Jordan",
+    "outfit": "[Jokester ☆ Vibes]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "B"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "A",
+      "late": "B",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100481,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105001",
+    "charId": "1050",
+    "name": "Narita Taishin",
+    "outfit": "[Nevertheless]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "F",
+      "late": "B",
+      "end": "A"
+    },
+    "unique": {
+      "id": 100501,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105201",
+    "charId": "1052",
+    "name": "Haru Urara",
+    "outfit": "[Bestest Prize ♪]",
+    "surfaces": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "G",
+      "late": "A",
+      "end": "B"
+    },
+    "unique": {
+      "id": 10521,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105601",
+    "charId": "1056",
+    "name": "Matikanefukukitaru",
+    "outfit": "[Rising☆Fortune]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": 10561,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105602",
+    "charId": "1056",
+    "name": "Matikanefukukitaru",
+    "outfit": "[Lucky Tidings]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distances": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "A",
+      "end": "F"
+    },
+    "unique": {
+      "id": null,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105801",
+    "charId": "1058",
+    "name": "Meisho Doto",
+    "outfit": "[Turbulent Blue]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "A",
+      "late": "B",
+      "end": "E"
+    },
+    "unique": {
+      "id": 100581,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "105901",
+    "charId": "1059",
+    "name": "Mejiro Dober",
+    "outfit": "[Off the Line]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "styles": {
+      "front": "C",
+      "pace": "B",
+      "late": "A",
+      "end": "G"
+    },
+    "unique": {
+      "id": 100591,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "106001",
+    "charId": "1060",
+    "name": "Nice Nature",
+    "outfit": "[Poinsettia Ribbon]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "styles": {
+      "front": "F",
+      "pace": "B",
+      "late": "A",
+      "end": "D"
+    },
+    "unique": {
+      "id": 10601,
+      "name": null,
+      "triggerStyle": []
+    }
+  },
+  {
+    "id": "106101",
+    "charId": "1061",
+    "name": "King Halo",
+    "outfit": "[King of Emeralds]",
+    "surfaces": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distances": {
+      "short": "A",
+      "mile": "B",
+      "medium": "B",
+      "long": "C"
+    },
+    "styles": {
+      "front": "G",
+      "pace": "B",
+      "late": "A",
+      "end": "D"
+    },
+    "unique": {
+      "id": 10611,
+      "name": null,
+      "triggerStyle": []
+    }
+  }
+]

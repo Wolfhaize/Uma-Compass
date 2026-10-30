@@ -8,13 +8,20 @@ import { topSkills, topUmas, accelFocus, ACCEL_FOCUS_LABELS } from '../utils/rec
 import { getIconUrl } from '../utils/iconUrl.js'
 import TrackDetailModal from '../components/TrackDetailModal.jsx'
 import CopyButton from '../components/CopyButton.jsx'
+import BackupControls from '../components/BackupControls.jsx'
+import { ENABLE_UMA_KITS } from '../config/features.js'
 import { formatDraftPoolForDiscord } from '../utils/discordExport.js'
 
 const NOTES_STORAGE_KEY = 'draftCompass.draftNotes.v1'
 const NOTES_DEBOUNCE_MS = 500
 
-function Chip({ children, count }) {
-  return <span className="chip chip-count">{children}{count > 1 && <b>×{count}</b>}</span>
+function Chip({ children, count, total }) {
+  return (
+    <span className="chip chip-count">
+      {children}
+      {total > 0 && <b>{count}/{total} tracks</b>}
+    </span>
+  )
 }
 
 // source: 'both' (curated pick sheet + this uma's own kit actually carries a
@@ -90,7 +97,7 @@ function DraftNotes() {
   )
 }
 
-function UmaChip({ uma, owned }) {
+function UmaChip({ uma, owned, total }) {
   return (
     <span
       className={`chip chip-count chip-uma chip-uma-${uma.source}` + (owned ? ' chip-uma-owned' : '')}
@@ -99,7 +106,7 @@ function UmaChip({ uma, owned }) {
       {uma.name}
       {uma.source === 'kit' && <span className="uma-kit-badge"> kit match</span>}
       {owned && <span className="already-have-badge">✓ already have</span>}
-      {uma.count > 1 && <b>×{uma.count}</b>}
+      {total > 0 && <b>{Math.min(uma.count, total)}/{total} tracks</b>}
     </span>
   )
 }
@@ -108,8 +115,17 @@ export default function DraftBoard() {
   const {
     selectedKeys, toggleTrack, clearSelection, isTrackTaken,
     selectedUmaIds, toggleUma, isUmaTaken, clearUmaSelection,
+    exportPool, importPool,
   } = useDraft()
   const [selectedTrack, setSelectedTrack] = useState(null)
+
+  function handleImportPool(data) {
+    importPool(data)
+    // Notes live outside DraftContext state (see DraftNotes below), so a
+    // full reload is the simplest way to make sure everything — including
+    // the notes textarea — reflects the imported data.
+    window.location.reload()
+  }
 
   const tracks = useMemo(
     () => TRACKS.filter(t => selectedKeys.includes(trackKey(t))),
@@ -163,8 +179,13 @@ export default function DraftBoard() {
           <p className="subtitle">Your active draft pool — no tracks or umas selected yet.</p>
         </header>
         <div className="empty-state">
-          <p>Head to the <Link to="/tracks" className="inline-link">Track Database</Link> and tick the tracks that are likely to come up in this draft, or save some umas from the <Link to="/uma-kits" className="inline-link">Uma Kit Library</Link> (or use the <Link to="/strategy" className="inline-link">Strategy Planner</Link> to auto-pick a set).</p>
+          <p>Head to the <Link to="/tracks" className="inline-link">Track Database</Link> and tick the tracks that are likely to come up in this draft, (or use the <Link to="/" className="inline-link">Strategy Planner</Link> to auto-pick a set). Or import a pool you saved earlier below.</p>
         </div>
+        <section className="board-section">
+          <h2>Backup</h2>
+          <p className="muted small">Save your draft pool as a file, or load one you exported earlier (from this device or another).</p>
+          <BackupControls type="draft-pool" label="draft pool" filenamePrefix="uma-compass-draft-pool" getExportData={exportPool} onImport={handleImportPool} />
+        </section>
         <DraftNotes />
       </div>
     )
@@ -186,6 +207,12 @@ export default function DraftBoard() {
           {tracks.length > 0 && <button className="reset" onClick={clearSelection}>Clear Tracks</button>}
         </div>
       </header>
+
+      <section className="board-section">
+        <h2>Backup</h2>
+        <p className="muted small">Save your draft pool (tracks, umas, taken marks, notes) as a file, or load one you exported earlier.</p>
+        <BackupControls type="draft-pool" label="draft pool" filenamePrefix="uma-compass-draft-pool" getExportData={exportPool} onImport={handleImportPool} />
+      </section>
 
       {tracks.length > 0 && (
         <>
@@ -212,7 +239,7 @@ export default function DraftBoard() {
               <h2>Recommended Skills</h2>
               <p className="muted small">Ranked by how often they show up across your selected tracks (taken tracks excluded).</p>
               <div className="chips">
-                {skills.map(s => <Chip key={s.name} count={s.count}>{s.name}</Chip>)}
+                {skills.map(s => <Chip key={s.name} count={s.count} total={activeTracks.length}>{s.name}</Chip>)}
               </div>
             </section>
 
@@ -222,11 +249,10 @@ export default function DraftBoard() {
                 Ranked by pick-sheet frequency plus kit matches — umas whose own skill kit naturally
                 carries a skill this track pool wants (e.g. a track wanting "Angling and Scheming"
                 auto-surfaces Seiun Sky, since that's her unique). Hover a chip marked <i>kit match</i> to
-                see which skill(s) it's based on. Umas already in your <Link to="/uma-kits" className="inline-link">My Umas</Link> pool
-                are marked "already have"; taken tracks/umas are excluded from these rankings.
+                see which skill(s) it's based on. Taken tracks/umas are excluded from these rankings.
               </p>
               <div className="chips">
-                {umas.length ? umas.map(u => <UmaChip key={u.name} uma={u} owned={myUmaNames.has(u.name)} />) : <span className="muted">No pot uma data listed for this set.</span>}
+                {umas.length ? umas.map(u => <UmaChip key={u.name} uma={u} owned={myUmaNames.has(u.name)} total={activeTracks.length} />) : <span className="muted">No pot uma data listed for this set.</span>}
               </div>
             </section>
           </div>
@@ -265,13 +291,13 @@ export default function DraftBoard() {
         </>
       )}
 
-      <section className="board-section">
+      {(ENABLE_UMA_KITS || myUmas.length > 0) && <section className="board-section">
         <div className="track-hub-header" style={{ marginBottom: 8 }}>
           <h2 style={{ margin: 0 }}>My Umas</h2>
           {myUmas.length > 0 && <button className="reset" onClick={clearUmaSelection}>Clear Umas</button>}
         </div>
         {myUmas.length === 0 ? (
-          <p className="muted small">No umas saved yet. Save some from the <Link to="/uma-kits" className="inline-link">Uma Kit Library</Link>.</p>
+          <p className="muted small">No umas saved yet.</p>
         ) : (
           <div className="table-wrap">
             <table>
@@ -300,7 +326,7 @@ export default function DraftBoard() {
             </table>
           </div>
         )}
-      </section>
+      </section>}
 
       <DraftNotes />
 

@@ -47,6 +47,11 @@ const LOCATION_ALIASES = {
   'Niigata (Outer)': 'Niigata',
 }
 
+// For "(Inner)" / "(Outer)" rows, umalator's `course` field tells them apart:
+// course 2 = Inner, course 3 = Outer (checked against Niigata + Kyoto, where
+// corner counts line up with tracks.js).
+const VARIANT_COURSE = { Inner: 2, Outer: 3 }
+
 let entriesByTrack = null
 function index() {
   if (entriesByTrack) return entriesByTrack
@@ -66,7 +71,9 @@ function index() {
 // have geometry data for that combination (e.g. tracks not covered by
 // course_data.json, or a distance/surface combo not present in it).
 export function getCourseGeometry(track) {
-  const location = LOCATION_ALIASES[track.location] || track.location
+  // Tolerate sheet typos like "Kyoto(inner)" -> "Kyoto (Inner)".
+  const cleanLocation = String(track.location).replace(/\s*\((inner|outer)\)/i, (_, v) => ` (${v[0].toUpperCase()}${v.slice(1).toLowerCase()})`)
+  const location = LOCATION_ALIASES[cleanLocation] || cleanLocation
   const byTrack = index()
   const candidates = byTrack.get(location)
   if (!candidates) return null
@@ -74,11 +81,19 @@ export function getCourseGeometry(track) {
   const surfaceCode = SURFACE_CODE[track.surface]
   const distance = Number(track.distance)
 
-  let match = candidates.find(c =>
+  const variant = /\((Inner|Outer)\)/.exec(cleanLocation)?.[1]
+  const wantedCourse = variant ? VARIANT_COURSE[variant] : null
+
+  const fits = c =>
     c.distance === distance &&
     c.surface === surfaceCode &&
     (track.handed === 'Straight' ? c.turn === TURN_CODE.Straight : true)
-  )
+
+  // Prefer the exact inner/outer course; fall back to any same-distance
+  // course if that variant isn't in course_data.json.
+  let match =
+    (wantedCourse != null && candidates.find(c => fits(c) && c.course === wantedCourse)) ||
+    candidates.find(fits)
   if (!match) return null
   return match
 }

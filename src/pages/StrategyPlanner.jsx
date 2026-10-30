@@ -1,29 +1,66 @@
 import React, { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { TRACKS } from '../data/tracks.js'
 import { useDraft, trackKey } from '../context/DraftContext.jsx'
-import { topSkills, topUmas, accelFocus, ACCEL_FOCUS_LABELS, DISTANCE_ORDER } from '../utils/recommend.js'
+import { topSkills, topUmas, accelFocus, ACCEL_FOCUS_LABELS, DISTANCE_ORDER, skillFilterOptions, umaFilterOptions, matchesSelection } from '../utils/recommend.js'
 import TrackDetailModal from '../components/TrackDetailModal.jsx'
 import CopyButton from '../components/CopyButton.jsx'
 import { formatDraftPoolForDiscord } from '../utils/discordExport.js'
 
 const ACCEL_OPTIONS = [
-  { key: 'final', label: 'Final Corner Accel', desc: 'Spurt kicks in right off the last corner, close to home.' },
-  { key: 'multi', label: '3rd Corner / Multi-Corner Accel', desc: 'Course has 4+ corners — sustained cornering matters more.' },
-  { key: 'straight', label: 'Straight Accel', desc: 'Spurt lands on a long final straight, not tied to a corner.' },
+  { key: 'final', label: 'Final Corner Accel (C4)', desc: 'Late Race starts somewhere on the final corner/very close to it.' },
+  { key: 'multi', label: 'Multi-Corner Accel (C3)', desc: 'Late Race starts on the 3rd corner.' },
+  { key: 'straight', label: 'Straight Accel', desc: 'Late Race starts on a straight/very close to it.' },
 ]
 
-function Chip({ children, count }) {
-  return <span className="chip chip-count">{children}{count > 1 && <b>×{count}</b>}</span>
+const SKILL_OPTIONS = skillFilterOptions(TRACKS)
+const UMA_OPTIONS = umaFilterOptions(TRACKS)
+
+const FILTERS_STORAGE_KEY = 'draftCompass.strategyFilters.v1'
+
+function loadFilters() {
+  try {
+    const raw = localStorage.getItem(FILTERS_STORAGE_KEY)
+    if (!raw) return { distances: [], accels: [], surfaces: [], skillPicks: [], umaPicks: [], matchMode: 'all' }
+    const parsed = JSON.parse(raw)
+    return {
+      distances: Array.isArray(parsed.distances) ? parsed.distances : [],
+      accels: Array.isArray(parsed.accels) ? parsed.accels : [],
+      surfaces: Array.isArray(parsed.surfaces) ? parsed.surfaces : [],
+      skillPicks: Array.isArray(parsed.skillPicks) ? parsed.skillPicks : [],
+      umaPicks: Array.isArray(parsed.umaPicks) ? parsed.umaPicks : [],
+      matchMode: parsed.matchMode === 'any' ? 'any' : 'all',
+    }
+  } catch {
+    return { distances: [], accels: [], surfaces: [], skillPicks: [], umaPicks: [], matchMode: 'all' }
+  }
+}
+
+function Chip({ children, count, total }) {
+  return (
+    <span className="chip chip-count">
+      {children}
+      {total > 0 && <b>{count}/{total} tracks</b>}
+    </span>
+  )
 }
 
 export default function StrategyPlanner() {
-  const [distances, setDistances] = useState([])
-  const [accels, setAccels] = useState([])
-  const [surfaces, setSurfaces] = useState([])
+  const initialFilters = useMemo(loadFilters, [])
+  const [distances, setDistances] = useState(initialFilters.distances)
+  const [accels, setAccels] = useState(initialFilters.accels)
+  const [surfaces, setSurfaces] = useState(initialFilters.surfaces)
+  const [skillPicks, setSkillPicks] = useState(initialFilters.skillPicks)
+  const [umaPicks, setUmaPicks] = useState(initialFilters.umaPicks)
+  const [matchMode, setMatchMode] = useState(initialFilters.matchMode)
   const [confirmingAdd, setConfirmingAdd] = useState(false)
   const [selectedTrack, setSelectedTrack] = useState(null)
   const { selectedKeys, toggleTrack, isTrackTaken, toggleTrackTaken } = useDraft()
+
+  React.useEffect(() => {
+    try {
+      localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify({ distances, accels, surfaces, skillPicks, umaPicks, matchMode }))
+    } catch { /* ignore */ }
+  }, [distances, accels, surfaces, skillPicks, umaPicks, matchMode])
 
   function toggleDistance(d) {
     setDistances(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d])
@@ -34,25 +71,41 @@ export default function StrategyPlanner() {
   function toggleSurface(s) {
     setSurfaces(prev => prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s])
   }
+  function toggleSkillPick(k) {
+    setSkillPicks(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
+  }
+  function toggleUmaPick(k) {
+    setUmaPicks(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
+  }
+  function resetFilters() {
+    setSkillPicks([])
+    setUmaPicks([])
+    setDistances([])
+    setAccels([])
+    setSurfaces([])
+  }
+
+  const started = distances.length > 0 || accels.length > 0 || surfaces.length > 0 || skillPicks.length > 0 || umaPicks.length > 0
 
   const matches = useMemo(() => {
-    if (distances.length === 0 && accels.length === 0 && surfaces.length === 0) return []
+    if (!started) return []
     return TRACKS.filter(t => {
       if (distances.length && !distances.includes(t.type)) return false
       if (accels.length && !accels.includes(accelFocus(t))) return false
       if (surfaces.length && !surfaces.includes(t.surface)) return false
+      if (!matchesSelection(t, 'skills', skillPicks, matchMode)) return false
+      if (!matchesSelection(t, 'accels', umaPicks, matchMode)) return false
       return true
     }).sort((a, b) => {
       const ai = DISTANCE_ORDER.indexOf(a.type), bi = DISTANCE_ORDER.indexOf(b.type)
       if (ai !== bi) return ai - bi
       return a.location.localeCompare(b.location)
     })
-  }, [distances, accels, surfaces])
+  }, [started, distances, accels, surfaces, skillPicks, umaPicks, matchMode])
 
   const skills = useMemo(() => topSkills(matches, 16), [matches])
   const umas = useMemo(() => topUmas(matches, 16), [matches])
 
-  const started = distances.length > 0 || accels.length > 0 || surfaces.length > 0
 
   const newTrackCount = useMemo(
     () => matches.filter(t => !selectedKeys.includes(trackKey(t))).length,
@@ -68,9 +121,12 @@ export default function StrategyPlanner() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Strategy Planner</h1>
-        <p className="subtitle">Pick a gameplan, get the tracks and umas that fit it.</p>
+      <header className="track-hub-header">
+        <div>
+          <h1>Strategy Planner</h1>
+          <p className="subtitle">Pick a gameplan, get the tracks and umas that fit it. Your filters are saved automatically.</p>
+        </div>
+        {started && <button className="reset" onClick={resetFilters}>Reset filters</button>}
       </header>
 
       <section className="board-section">
@@ -122,9 +178,56 @@ export default function StrategyPlanner() {
         </div>
       </section>
 
+      <section className="board-section">
+        <h2>4. Accel Skills</h2>
+        <p className="muted small">Pick the accel skills you plan to bring (e.g. Bring on the Banquet!). The number is how many tracks list that skill.</p>
+        <div className="option-row">
+          {SKILL_OPTIONS.map(o => (
+            <button
+              key={o.key}
+              className={'option-btn' + (skillPicks.includes(o.key) ? ' active' : '')}
+              onClick={() => toggleSkillPick(o.key)}
+            >
+              {o.label} <span className="muted small">({o.count})</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="board-section">
+        <h2>5. Accel Inherit Umas</h2>
+        <p className="muted small">Pick the umas you can inherit accels from (e.g. NY Kitasan).</p>
+        <div className="option-row">
+          {UMA_OPTIONS.map(o => (
+            <button
+              key={o.key}
+              className={'option-btn' + (umaPicks.includes(o.key) ? ' active' : '')}
+              onClick={() => toggleUmaPick(o.key)}
+            >
+              {o.label} <span className="muted small">({o.count})</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {(skillPicks.length + umaPicks.length > 1) && (
+        <section className="board-section">
+          <h2>Skill / Uma Match Mode</h2>
+          <p className="muted small">
+            {matchMode === 'all'
+              ? 'Tracks must work with EVERYTHING you picked in sections 4 and 5 (a combo).'
+              : 'Tracks that work with ANY of the skills or umas you picked in sections 4 and 5.'}
+          </p>
+          <div className="option-row">
+            <button className={'option-btn' + (matchMode === 'all' ? ' active' : '')} onClick={() => setMatchMode('all')}>Must have all</button>
+            <button className={'option-btn' + (matchMode === 'any' ? ' active' : '')} onClick={() => setMatchMode('any')}>Any of them</button>
+          </div>
+        </section>
+      )}
+
       {!started && (
         <div className="empty-state">
-          <p>Choose at least one distance or accel shape above to see matching tracks and recommended picks.</p>
+          <p>Choose at least one filter above to see matching tracks and recommended picks.</p>
         </div>
       )}
 
@@ -166,13 +269,13 @@ export default function StrategyPlanner() {
             <section className="board-section">
               <h2>Recommended Skills</h2>
               <div className="chips">
-                {skills.length ? skills.map(s => <Chip key={s.name} count={s.count}>{s.name}</Chip>) : <span className="muted">No matches yet.</span>}
+                {skills.length ? skills.map(s => <Chip key={s.name} count={s.count} total={matches.length}>{s.name}</Chip>) : <span className="muted">No matches yet.</span>}
               </div>
             </section>
             <section className="board-section">
               <h2>Recommended Umas / Accels</h2>
               <div className="chips">
-                {umas.length ? umas.map(u => <Chip key={u.name} count={u.count}>{u.name}</Chip>) : <span className="muted">No pot uma data for this combination.</span>}
+                {umas.length ? umas.map(u => <Chip key={u.name} count={Math.min(u.count, matches.length)} total={matches.length}>{u.name}</Chip>) : <span className="muted">No pot uma data for this combination.</span>}
               </div>
             </section>
           </div>
@@ -221,7 +324,7 @@ export default function StrategyPlanner() {
 
           {selectedKeys.length > 0 && (
             <p className="muted small">
-              <Link to="/draft-board" className="inline-link">View your full draft pool ({selectedKeys.length}) →</Link>
+              {selectedKeys.length} track{selectedKeys.length !== 1 ? 's' : ''} in your draft pool
             </p>
           )}
         </>

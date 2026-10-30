@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { TRACKS, LOCATIONS, SURFACES, TYPES, HANDEDS } from '../data/tracks.js'
 import Attribution from '../components/Attribution.jsx'
 import { useDraft } from '../context/DraftContext.jsx'
@@ -63,9 +62,9 @@ export default function TrackDatabase() {
         </div>
         {selectedKeys.length > 0 && (
           <div className="draft-pool-row">
-            <Link to="/draft-board" className="draft-pool-pill">
-              🏇 {selectedKeys.length} in Draft Pool →
-            </Link>
+            <span className="draft-pool-pill">
+              🏇 {selectedKeys.length} in Draft Pool
+            </span>
             <button
               className="clear-pool-btn"
               onClick={clearSelection}

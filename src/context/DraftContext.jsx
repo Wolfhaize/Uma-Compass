@@ -96,16 +96,37 @@ export function DraftProvider({ children }) {
 
   const isUmaTaken = useCallback((u) => takenUmaIds.includes(u.cardId), [takenUmaIds])
 
+  // Bundles everything the draft pool export/import needs into one plain
+  // object. NOTES_STORAGE_KEY lives in DraftBoard.jsx, so notes are read/
+  // written there directly rather than through this context.
+  const exportPool = useCallback(() => ({
+    selectedKeys, selectedUmaIds, takenTrackKeys, takenUmaIds,
+    notes: (() => { try { return localStorage.getItem('draftCompass.draftNotes.v1') || '' } catch { return '' } })(),
+  }), [selectedKeys, selectedUmaIds, takenTrackKeys, takenUmaIds])
+
+  const importPool = useCallback((data) => {
+    if (!data || typeof data !== 'object') return
+    if (Array.isArray(data.selectedKeys)) persist(data.selectedKeys)
+    if (Array.isArray(data.selectedUmaIds)) persistUmas(data.selectedUmaIds)
+    if (Array.isArray(data.takenTrackKeys)) persistTakenTracks(data.takenTrackKeys)
+    if (Array.isArray(data.takenUmaIds)) persistTakenUmas(data.takenUmaIds)
+    if (typeof data.notes === 'string') {
+      try { localStorage.setItem('draftCompass.draftNotes.v1', data.notes) } catch { /* ignore */ }
+    }
+  }, [persist, persistUmas, persistTakenTracks, persistTakenUmas])
+
   const value = useMemo(() => ({
     selectedKeys, toggleTrack, isSelected, clearSelection, trackKey,
     selectedUmaIds, toggleUma, isUmaSelected, clearUmaSelection,
     takenTrackKeys, toggleTrackTaken, isTrackTaken,
     takenUmaIds, toggleUmaTaken, isUmaTaken,
+    exportPool, importPool,
   }), [
     selectedKeys, toggleTrack, isSelected, clearSelection,
     selectedUmaIds, toggleUma, isUmaSelected, clearUmaSelection,
     takenTrackKeys, toggleTrackTaken, isTrackTaken,
     takenUmaIds, toggleUmaTaken, isUmaTaken,
+    exportPool, importPool,
   ])
 
   return <DraftContext.Provider value={value}>{children}</DraftContext.Provider>

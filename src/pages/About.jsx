@@ -38,9 +38,25 @@ export default function About() {
             doesn't fit neatly into tracks or umas — opponent reads, reminders, etc. It autosaves as
             you type.
           </p>
+          <p>
+            <strong>Uma Kit Library</strong> is the reference for every uma's actual skill kit —
+            phase labels, trigger locations, "Random" vs "Anywhere" distinctions, the works. Use it to
+            look up what an uma actually carries, or to save umas to "My Umas" on the Draft Board.
+            It's a different tool from the Draft Board: the Draft Board tells you what to look for,
+            the Kit Library tells you exactly what a specific uma has.
+          </p>
+          <p>
+            <strong>Schedule</strong> lists upcoming banners (uma and support), lays out the race/event
+            calendar, and lets you build pull plans — save which banners you're saving for, add notes,
+            and export/import the plan just like the draft pool below.
+          </p>
           <p className="muted small">
             Everything here is stored locally in your browser (no account, no server-side database) —
-            clearing your browser data or switching browsers/devices will reset it.
+            clearing your browser data or switching browsers/devices will reset it. Use the
+            <strong> Export</strong>/<strong>Import</strong> buttons on the Draft Board and Schedule pages
+            to save your data to a file and carry it to another device, or as a backup before clearing
+            your browser. Each exported file is tagged with what it is, so importing the wrong file (or
+            a random JSON file) is rejected rather than silently corrupting your data.
           </p>
         </div>
       </section>

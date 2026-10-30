@@ -2,6 +2,18 @@
 // date format: 'YYYY-MM-DD'
 export const CHANGELOG = [
   {
+    version: '1.2.0',
+    date: '2026-09-26',
+    notes: [
+      'Removed the Tournaments feature to focus on drafting/strategy tools; replaced it with a new Schedule page.',
+      'Schedule: upcoming banner list, a race/event calendar, and pull plans you can build, save, and export.',
+      'Added JSON export/import for your draft pool and for pull plans, with a signature check so the app can tell the two apart and reject unrelated files.',
+      'Strategy Planner filters (distance/accel/surface) now persist between visits.',
+      'Recommended Skills/Umas chips now show "x/y tracks" instead of a bare count, so the strength of a match is clear at a glance.',
+      'Removed dead code (unused Home.jsx page, commented-out footer block) and added mobile-responsive layout: a collapsing nav menu, stacked grids, and scrollable tables on narrow screens.',
+    ],
+  },
+  {
     version: '1.1.0',
     date: '2026-08-09',
     notes: [

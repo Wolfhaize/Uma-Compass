@@ -49,6 +49,16 @@ export function UmaIcon(props) {
   )
 }
 
+export function CalendarIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
+      <path d="M7.5 13h2.2M11.9 13h2.2M16.3 13h1M7.5 16.5h2.2M11.9 16.5h2.2M16.3 16.5h1" />
+    </svg>
+  )
+}
+
 export function TrophyIcon(props) {
   return (
     <svg {...base} {...props}>

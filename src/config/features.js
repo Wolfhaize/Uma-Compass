@@ -15,3 +15,11 @@
 // the UI will start treating the evolved id as the kit skill (tagged and
 // weighted as upside) without any other code changes needed.
 export const ENABLE_SKILL_EVOLUTIONS = false
+
+// ---- Page visibility (draft-focused build) ---------------------------------
+// Flip to true to bring a page back into the nav + routes.
+// Tournaments, the Pull Planner and the Skill Sheet (Tournaments*.jsx,
+// PullPlanner.jsx, SkillSheet.jsx) have no route in App.jsx at all, so they
+// are already unreachable; only these two needed flags.
+export const ENABLE_SCHEDULE = false   // banners, race calendar, pull plans
+export const ENABLE_UMA_KITS = false   // Uma Kit Library + "My Umas" saving

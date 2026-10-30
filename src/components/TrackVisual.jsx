@@ -75,23 +75,42 @@ function GeometryVisual({ track, geometry }) {
   const sortedSlopes = [...slopes].sort((a, b) => a.start - b.start)
   const toX = m => (m / distance) * 1000
 
-  const RISE = BAND_H * 0.55
-  let level = 0
-  const elevPoints = [{ m: 0, y: 0 }]
+  // Elevation model: `height` is how far above the baseline (0 = BAND_BASE,
+  // the line shared with the straights/corners band below) the ground
+  // currently sits. We do NOT start the track at height 0 — some courses
+  // open with a downhill, and if we started at the floor there'd be
+  // nowhere left to show it dropping. So we start a bit above the floor
+  // (START_HEIGHT) and let downhills eat into that headroom.
+  //
+  // A hill is a ramp: it rises (or drops) steadily from where it starts
+  // to where it stops, using a fixed visual step per hill (not scaled to
+  // the game's real slope value — every hill reads the same size so the
+  // shapes stay clean). Wherever a hill stops becomes the new ground
+  // level, and the track stays flat at that level until the next hill,
+  // which then rises or drops again from there. Height is clamped so a
+  // run of hills in the same direction can't push the terrain through
+  // the floor (below 0) or through the top of the band.
+  const START_HEIGHT = 10
+  const HILL_STEP = 16
+  const MAX_HEIGHT = BAND_H - 14
+  const MIN_HEIGHT = 0
+
+  let height = START_HEIGHT
+  const elevPoints = [{ m: 0, y: height }]
   const segRanges = [] // { m0, y0, m1, y1, up }
   sortedSlopes.forEach(s => {
     const m0 = s.start, m1 = s.start + s.length
     if (m0 > elevPoints[elevPoints.length - 1].m) {
-      elevPoints.push({ m: m0, y: level }) // flat plateau up to this slope's start
+      elevPoints.push({ m: m0, y: height }) // flat plateau up to this slope's start
     }
-    const newLevel = level + (s.slope > 0 ? -RISE : RISE)
-    elevPoints.push({ m: m1, y: newLevel })
-    segRanges.push({ m0, y0: level, m1, y1: newLevel, up: s.slope > 0 })
-    level = newLevel
+    const newHeight = Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, height + (s.slope > 0 ? HILL_STEP : -HILL_STEP)))
+    elevPoints.push({ m: m1, y: newHeight })
+    segRanges.push({ m0, y0: height, m1, y1: newHeight, up: s.slope > 0 })
+    height = newHeight
   })
-  elevPoints.push({ m: distance, y: level })
+  elevPoints.push({ m: distance, y: height })
 
-  const toY = y => BAND_BASE + y
+  const toY = y => BAND_BASE - y
   const terrainPath = `M0,${BAND_BASE} ` +
     elevPoints.map(p => `L${toX(p.m)},${toY(p.y)}`).join(' ') +
     ` L1000,${BAND_BASE} Z`
@@ -240,7 +259,7 @@ function GeometryVisual({ track, geometry }) {
         )}
         <div className="tv-legend-meta">{corners.length} corner{corners.length !== 1 ? 's' : ''} · {straights.length} straight{straights.length !== 1 ? 's' : ''} · {track.handed}-handed</div>
       </div>
-      <p className="tv-note">Real course geometry (corners, straights, elevation) — hover the strip for exact distance.</p>
+      {/* <p className="tv-note">Real course geometry (corners, straights, elevation) — hover the strip for exact distance.</p> */}
     </div>
   )
 }

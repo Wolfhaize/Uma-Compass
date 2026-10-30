@@ -59,7 +59,7 @@ export const TRACKS = [
     2,
     [ "Victoria por plancha", "Straightaway Spurt",
       "Louder! Tracen Cheer!", "Budding Blossom"],
-    ["Nishino Flower"],
+    ["Nishino", "Cheer Halo"],
   ),
   T(
     "Chukyo",
@@ -81,9 +81,9 @@ export const TRACKS = [
       "Angling and Scheming",
       "Let's Pump Some Iron!",
       "Budding Blossom",
-      "Shooting For Victory",
+      "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Chukyo",
@@ -104,9 +104,9 @@ export const TRACKS = [
       "Angling and Scheming",
       "Let's Pump Some Iron!",
       "Budding Blossom",
-      "Shooting For Victory",
+      "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower", "Red Maru", "Fantasy Pasa"],
+    ["OG Taiki", "Nishino", "Red Maru", "Fantasy Pasa"],
   ),
   T(
     "Chukyo",
@@ -125,12 +125,14 @@ export const TRACKS = [
     [
       
       
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Condor's Fury",
       "Angling and Scheming",
       "Red Shift/LP1211-M",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Red Maru", "Fantasy Pasa"],
+    ["X. Oguri", "Red Maru", "Fantasy Pasa", "NY Kitasan"],
   ),
   T(
     "Chukyo",
@@ -150,10 +152,35 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
+  ),
+  T(
+    "Chukyo",
+    "1200",
+    "Sprint",
+    "Dirt",
+    "Left",
+    "-",
+    500,
+    800,
+    "Final Straight",
+    1000,
+    "After",
+    2,
+    2,
+    [
+      
+      
+      "Straightaway Spurt",
+      "Budding Blossom",
+      "Louder! Tracen Cheer!",
+      "Victoria por plancha"
+    ],
+    ["Cheer Halo", "Nishino", "OG Pasa"],
   ),
   T(
     "Chukyo",
@@ -173,11 +200,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Chukyo",
@@ -198,7 +225,7 @@ export const TRACKS = [
       
       "Red Shift/LP1211-M",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
     ["Red Maru", "Fantasy Pasa"],
@@ -222,11 +249,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Red Maru", "Fantasy Pasa", "Nishino Flower"],
+    ["Red Maru", "Fantasy Pasa", "Nishino"],
   ),
   T(
     "Fukushima",
@@ -246,7 +273,7 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
     [],
@@ -269,10 +296,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Fukushima",
@@ -288,9 +316,8 @@ export const TRACKS = [
     "Before",
     6,
     4,
-    [ "Straightaway Spurt",
-      "Louder! Tracen Cheer!", "Victory Cheer", "Break It Down!"],
-    ["Kitasan", "Ballroom Seiun"],
+    [ "Straightaway Spurt", "Victory Cheer", "Break It Down!"],
+    ["OG Kitasan", "Ballroom Seiun"],
   ),
   T(
     "Fukushima",
@@ -309,11 +336,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Fantasy Pasa", "Red Maru", "Nishino Flower"],
+    ["Fantasy Pasa", "Red Maru", "Nishino", "OG Taiki"],
   ),
   T(
     "Fukushima",
@@ -333,11 +360,36 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    [],
+    ["OG Kitasan"],
   ),
+  T(
+    "Fukushima",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Right",
+    "Stamina",
+    1000,
+    1600,
+    "Straight",
+    2000,
+    "Before",
+    6,
+    4,
+    [
+      
+      
+      "Victory Cheer",
+      "Break It Down!",
+      "Louder! Tracen Cheer!",
+      "Straightaway Spurt",
+    ],
+    ["OG Kitasan", "Cheer Halo", "Ballroom Seiun"],
+  ),
+
 
   // Funabashi
   T(
@@ -354,8 +406,7 @@ export const TRACKS = [
     "After",
     2,
     2,
-    ["Straightaway Spurt",
-      "Louder! Tracen Cheer!"
+    ["Straightaway Spurt", "Budding Blossom", "Louder! Tracen Cheer!"
     ],
     [],
   ),
@@ -373,8 +424,7 @@ export const TRACKS = [
     "After",
     4,
     3,
-    [],
-    [],
+    ["Moving Past and Beyond", "Angling and Scheming", "Let's Pump Some Iron!"],
     [],
   ),
   T(
@@ -391,7 +441,7 @@ export const TRACKS = [
     "After",
     4,
     3,
-    ["Moving Past and Beyond"],
+    ["Moving Past and Beyond", "Angling and Scheming", "Let's Pump Some Iron!", "Victory Cheer"],
     [],
   ),
   T(
@@ -408,12 +458,13 @@ export const TRACKS = [
     "Before",
     6,
     4,
-    ["Straightaway Spurt",
+    ["Straightaway Spurt", "Victory Cheer", "Break It Down!",
       "Louder! Tracen Cheer!"
     ],
     [],
   ),
 
+  // Hakodate
   T(
     "Hakodate",
     "1000",
@@ -431,11 +482,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Hakodate",
@@ -451,7 +502,7 @@ export const TRACKS = [
     "After",
     2,
     2,
-    [ "Angling and Scheming", "Let's Pump Some Iron"],
+    [ "Angling and Scheming", "Let's Pump Some Iron!", "Condor's Fury"],
     ["Red Maru", "Fantasy Pasa"],
   ),
   T(
@@ -471,10 +522,10 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["Kitasan"],
+    ["OG Kitasan"],
   ),
   T(
     "Hakodate",
@@ -494,10 +545,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
+      "Victory Cheer",
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Hakodate",
@@ -517,11 +570,35 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
+  ),
+
+  T(
+    "Hakodate",
+    "1000",
+    "Sprint",
+    "Dirt",
+    "Right",
+    "-",
+    417,
+    667,
+    "Final Corner",
+    833,
+    "After",
+    4,
+    3,
+    [
+      
+      
+      "Angling and Scheming",
+      "Let's Pump Some Iron!",
+      "Budding Blossom",
+      "Shooting for Victory",
+    ],
+    ["OG Taiki"],
   ),
   T(
     "Hakodate",
@@ -541,12 +618,38 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Victory Cheer",
     ],
     [],
   ),
 
+  T(
+    "Hakodate",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Right",
+    "Stamina",
+    1000,
+    1600,
+    "Straight",
+    2000,
+    "After",
+    4,
+    3,
+    [
+      
+      
+      "Victory Cheer",
+      "Break It Down!",
+      "Straightaway Spurt",
+    ],
+    [],
+  ),
+
+// Hanshin  
   T(
     "Hanshin",
     "1200",
@@ -564,10 +667,10 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
     ],
-    ["Nishino Flower"],
+    ["Nishino"],
   ),
   T(
     "Hanshin",
@@ -586,11 +689,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Hanshin",
@@ -606,8 +709,8 @@ export const TRACKS = [
     "After",
     2,
     2,
-    [ "Angling and Scheming", "Let's Pump Some Iron", "Budding Blossom"],
-    ["Taiki Shuttle", "Nishino Flower"],
+    [ "Angling and Scheming", "Let's Pump Some Iron!", "Budding Blossom"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Hanshin",
@@ -627,11 +730,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Hanshin",
@@ -650,12 +753,14 @@ export const TRACKS = [
     [
       
       
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Angling and Scheming",
       "Red Shift/LP1211-M",
+      "Bring on the Banquet!",
+      "Condor's Fury"
     ],
-    ["X. Oguri", "SMaru", "Red Maru", "Fantasy Pasa"],
+    ["X. Oguri", "Red Maru", "Fantasy Pasa", "NY Kitasan"],
   ),
   T(
     "Hanshin",
@@ -675,10 +780,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["X. Oguri", "SMaru"],
+    ["X. Oguri", "NY Kitasan"],
   ),
   T(
     "Hanshin",
@@ -699,10 +805,11 @@ export const TRACKS = [
       
       "Red Shift/LP1211-M",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["Red Maru", "Fantasy Pasa", "X. Oguri"],
+    ["Red Maru", "Fantasy Pasa", "X. Oguri", "NY Kitasan"],
   ),
   T(
     "Hanshin",
@@ -722,11 +829,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Red Shift/LP1211-M",
+      "Bring on the Banquet!",
     ],
-    [],
+    ["NY Kitasan","Red Maru"],
   ),
   T(
     "Hanshin",
@@ -746,14 +854,14 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun", "NY Kitasan"],
   ),
   T(
     "Hanshin",
@@ -773,11 +881,33 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
+  ),
+
+  T(
+    "Hanshin",
+    "1200",
+    "Sprint",
+    "Dirt",
+    "Right",
+    "-",
+    500,
+    800,
+    "Final Corner",
+    1000,
+    "After",
+    2,
+    2,
+    [
+      
+      "Angling and Scheming",
+      "Let's Pump Some Iron!",
+      "Budding Blossom",
+    ],
+    ["Nishino"],
   ),
   T(
     "Hanshin",
@@ -796,11 +926,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle"],
+    ["OG Taiki"],
   ),
   T(
     "Hanshin",
@@ -821,10 +951,10 @@ export const TRACKS = [
       
       "Red Shift/LP1211-M",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["Red Maru", "Fantasy Pasa"],
+    ["Red Maru"],
   ),
   T(
     "Hanshin",
@@ -844,10 +974,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["X. Oguri", "SMaru"],
+    ["X. Oguri", "NY Kitasan"],
   ),
 
   // Kawasaki
@@ -865,7 +996,9 @@ export const TRACKS = [
     "After",
     4,
     3,
-    ["Moving Past and Beyond"],
+    ["Moving Past and Beyond", "Victory Cheer",
+      "Angling and Scheming", "Let's Pump Some Iron!"
+    ],
     [],
   ),
   T(
@@ -882,8 +1015,8 @@ export const TRACKS = [
     "Before",
     4,
     3,
-    ["Straightaway Spurt",
-      "Louder! Tracen Cheer!", "Moving Past and Beyond"],
+    ["Straightaway Spurt", "Break It Down!",
+      "Victory Cheer", "Moving Past and Beyond"],
     [],
   ),
   T(
@@ -900,9 +1033,11 @@ export const TRACKS = [
     "Before",
     6,
     4,
-    ["Angling and Scheming", "Let's Pump Some Iron"],
+    ["Straightaway Spurt", "Break It Down!", "Victory Cheer",],
     [],
   ),
+
+  // Kokura
 
   T(
     "Kokura",
@@ -921,10 +1056,10 @@ export const TRACKS = [
     [
       "Angling and Scheming",
       "Let's Pump Some Iron!",
-      "Shooting For Victory",
+      "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Kokura",
@@ -944,10 +1079,10 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["Kitasan"],
+    ["OG Kitasan"],
   ),
   T(
     "Kokura",
@@ -967,10 +1102,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Kokura",
@@ -990,12 +1126,35 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
   ),
+
+  T(
+    "Kokura",
+    "1000",
+    "Sprint",
+    "Dirt",
+    "Right",
+    "Speed",
+    417,
+    667,
+    "Final Corner Downhill",
+    833,
+    "After",
+    2,
+    2,
+    [
+      
+      "Angling and Scheming",
+      "Let's Pump Some Iron!",
+      "Budding Blossom", "Shooting for Victory",
+    ],
+    ["OG Taiki"],
+  ),
+
   T(
     "Kokura",
     "1700",
@@ -1013,12 +1172,39 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Victory Cheer",
     ],
     [],
   ),
 
+  
+  T(
+    "Kokura",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Right",
+    "-",
+    1000,
+    1600,
+    "Straight",
+    2000,
+    "After",
+    6,
+    4,
+    [
+      
+      "Straightaway Spurt",
+      "Break It Down!",
+      "Victory Cheer",
+    ],
+    [],
+  ),
+
+  // Kyoto
+  
   T(
     "Kyoto",
     "1200",
@@ -1033,9 +1219,47 @@ export const TRACKS = [
     "After",
     2,
     2,
-    ["Angling and Scheming", "Let's Pump Some Iron", "Budding Blossom"],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["Angling and Scheming", "Let's Pump Some Iron!", "Budding Blossom"],
+    ["OG Taiki", "Nishino"],
   ),
+
+  T(
+    "Kyoto (Inner)",
+    "1600",
+    "Mile",
+    "Turf",
+    "Right",
+    "Speed",
+    667,
+    1067,
+    "Final Corner",
+    1333,
+    "After",
+    2,
+    2,
+    ["Angling and Scheming", "Let's Pump Some Iron!", "Condor's Fury"],
+    ["Red Maru", "Fantasy Pasa"],
+  ),
+
+   T(
+    "Kyoto (Outer)",
+    "1600",
+    "Mile",
+    "Turf",
+    "Right",
+    "Speed",
+    667,
+    1067,
+    "Final Corner",
+    1333,
+    "After",
+    2,
+    2,
+    ["Shooting for Victory", "Budding Blossom", "Angling and Scheming", "Let's Pump Some Iron!"],
+    ["OG Taiki", "Nishino", "Red Maru", "Fantasy Pasa"],
+  ),
+
+
   T(
     "Kyoto",
     "1800",
@@ -1053,12 +1277,14 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Red Shift/LP1211-M",
       "Moving Past and Beyond",
+      "Condor's Fury",
     ],
     ["Red Maru", "Fantasy Pasa"],
   ),
+  
   T(
     "Kyoto",
     "2000",
@@ -1077,10 +1303,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "NY Kitasan"],
   ),
   T(
     "Kyoto",
@@ -1100,10 +1327,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Kyoto",
@@ -1123,10 +1351,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["Kitasan", "X. Oguri"],
+    ["OG Kitasan", "X. Oguri", "NY Kitasan"],
   ),
   T(
     "Kyoto",
@@ -1146,11 +1375,10 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
   ),
   T(
     "Kyoto",
@@ -1170,11 +1398,10 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
   ),
   T(
     "Kyoto (Inner)",
@@ -1193,11 +1420,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Kyoto (Outer)",
@@ -1216,53 +1443,13 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
-  T(
-    "Kyoto (Inner)",
-    "1600",
-    "Mile",
-    "Turf",
-    "Right",
-    "Speed",
-    667,
-    1067,
-    "Final Corner",
-    1333,
-    "After",
-    2,
-    2,
-    [  "Angling and Scheming", "Let's Pump Some Iron"],
-    ["Red Maru", "Fantasy Pasa"],
-  ),
-  T(
-    "Kyoto (Outer)",
-    "1600",
-    "Mile",
-    "Turf",
-    "Right",
-    "Speed",
-    667,
-    1067,
-    "Final Corner",
-    1333,
-    "After",
-    2,
-    2,
-    [
-      
-      
-      "Angling and Scheming",
-      "Let's Pump Some Iron",
-      "Shooting for Victory",
-      "Budding Blossom",
-    ],
-    ["Taiki Shuttle", "Red Maru", "Nishino Flower"],
-  ),
+ 
   T(
     "Kyoto",
     "1200",
@@ -1277,8 +1464,8 @@ export const TRACKS = [
     "After",
     2,
     2,
-    ["Angling and Scheming", "Let's Pump Some Iron", "Budding Blossom"],
-    ["Taiki Shuttle"],
+    ["Angling and Scheming", "Let's Pump Some Iron!", "Budding Blossom"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Kyoto",
@@ -1297,11 +1484,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle", "Red Maru", "Fantasy Pasa"],
+    ["OG Taiki", "Red Maru", "Fantasy Pasa"],
   ),
   T(
     "Kyoto",
@@ -1320,7 +1507,7 @@ export const TRACKS = [
     [
       
       
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Angling and Scheming",
       "Red Shift/LP1211-M",
@@ -1345,10 +1532,10 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["X. Oguri", "SMaru"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
 
   // Morioka
@@ -1366,9 +1553,8 @@ export const TRACKS = [
     "After",
     2,
     2,
-    [],
-    [],
-    [],
+    ["Shooting for Victory", "Budding Blossom", "Angling and Scheming", "Let's Pump Some Iron!"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Morioka",
@@ -1384,7 +1570,7 @@ export const TRACKS = [
     "After",
     2,
     2,
-    ["Angling and Scheming", "Let's Pump Some Iron"],
+    ["Angling and Scheming", "Let's Pump Some Iron!", "Moving Past and Beyond"],
     [],
   ),
   T(
@@ -1402,7 +1588,7 @@ export const TRACKS = [
     4,
     3,
     ["Moving Past and Beyond"],
-    [],
+    ["OG Kitasan"],
   ),
   T(
     "Morioka",
@@ -1418,10 +1604,13 @@ export const TRACKS = [
     "After",
     4,
     3,
-    ["Moving Past and Beyond"],
+    ["Moving Past and Beyond", "Bring on the Banquet!", 
+      "Victory Cheer",
+      "Angling and Scheming", "Let's Pump Some Iron!"],
     ["X. Oguri"],
   ),
 
+  // Nakayama
   T(
     "Nakayama",
     "1200",
@@ -1438,11 +1627,11 @@ export const TRACKS = [
     1,
     [
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Nakayama",
@@ -1462,9 +1651,10 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Red Shift/LP1211-M",
       "Moving Past and Beyond",
+      "Condor's Fury"
     ],
     ["Red Maru", "Fantasy Pasa"],
   ),
@@ -1485,8 +1675,9 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+  
     ],
     [],
   ),
@@ -1508,10 +1699,13 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Red Shift/LP1211-M",
+      "Condor's Fury",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "Red Maru", "Fantasy Pasa", "NY Kitasan", "OG Kitasan"],
   ),
   T(
     "Nakayama",
@@ -1531,10 +1725,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Nakayama",
@@ -1553,14 +1748,14 @@ export const TRACKS = [
     [
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!"
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun", "NY Kitasan"],
   ),
   T(
     "Nakayama",
@@ -1580,13 +1775,13 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
+      "Bring on the Banquet!",
     ],
-    [],
+    ["OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Nakayama",
@@ -1606,11 +1801,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle"],
+    ["OG Taiki"],
   ),
   T(
     "Nakayama",
@@ -1629,12 +1824,59 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    [],
+    ["OG Kitasan"],
   ),
 
+  T(
+    "Nakayama",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Right",
+    "Stamina",
+    1000,
+    1600,
+    "Straight",
+    2000,
+    "Before",
+    4,
+    3,
+    [
+      
+      "Victory Cheer",
+      "Straightaway Spurt",
+      "Break It Down!",
+    ],
+    ["OG Kitasan", "Ballroom Seiun"],
+  ),
+
+   T(
+    "Nakayama",
+    "2500",
+    "lONG",
+    "Dirt",
+    "Right",
+    "-",
+    1042,
+    1667,
+    "Straight",
+    2083,
+    "Before",
+    6,
+    4,
+    [
+      
+      "Victory Cheer",
+      "Straightaway Spurt",
+      "Break It Down!",
+    ],
+    ["OG Kitasan", "Ballroom Seiun"],
+  ),
+
+  // Niigata
   T(
     "Niigata",
     "1000",
@@ -1649,9 +1891,7 @@ export const TRACKS = [
     "-",
     0,
     2,
-    ["Straightaway Spurt",
-      "Louder! Tracen Cheer!"
-    ],
+    ["Straightaway Spurt", "Break It Down!"],
     [],
   ),
   T(
@@ -1671,10 +1911,10 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Niigata",
@@ -1694,11 +1934,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
-      "Nishino Flower",
+      "Budding Blossom",
+      "Condor's Fury"
     ],
-    ["Taiki Shuttle", "Red Maru", "Fantasy Pasa", "Nishino Flower"],
+    ["OG Taiki", "Red Maru", "Fantasy Pasa", "Nishino"],
   ),
   T(
     "Niigata",
@@ -1715,8 +1956,8 @@ export const TRACKS = [
     2,
     2,
     [  "Straightaway Spurt",
-      "Louder! Tracen Cheer!", "Budding Blossom"],
-    ["Nishino Flower"],
+      "Break It Down!", "Budding Blossom"],
+    ["Nishino"],
   ),
   T(
     "Niigata",
@@ -1740,7 +1981,7 @@ export const TRACKS = [
       "Budding Blossom",
       "Victoria por plancha",
     ],
-    ["Nishino Flower"],
+    ["Nishino", "OG Pasa", "Cheer Halo"],
   ),
   T(
     "Niigata",
@@ -1760,11 +2001,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Victory Cheer",
+      "Bring on the Banquet!"
     ],
-    [],
+    ["NY Kitasan", "OG Kitasan"],
   ),
   T(
     "Niigata",
@@ -1786,11 +2028,12 @@ export const TRACKS = [
       "Straightaway Spurt",
       "Louder! Tracen Cheer!",
       "Victory Cheer",
+      "Break It Down!",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["Kitasan", "X. Oguri"],
+    ["OG Kitasan", "X. Oguri", "Ballroom Seiun"],
   ),
   T(
     "Niigata (Inner)",
@@ -1810,10 +2053,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Victory Cheer",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Niigata (Outer)",
@@ -1833,13 +2078,12 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
-      "Budding Blossom",
+      "Let's Pump Some Iron!",
       "Straightaway Spurt",
       "Louder! Tracen Cheer!",
       "Victoria por plancha",
     ],
-    ["X. Oguri", "SMaru", "Taiki Shuttle", "Nishino Flower(??)"],
+    ["X. Oguri", "OG Taiki", "OG Pasa", "Cheer Halo"],
   ),
   T(
     "Niigata",
@@ -1855,8 +2099,11 @@ export const TRACKS = [
     "After",
     2,
     2,
-    ["Angling and Scheming", "Let's Pump Some Iron", "Budding Blossom"],
-    ["Red Maru", "Fantasy Pasa", "Nishino Flower", "Taiki Shuttle"],
+    ["Angling and Scheming", "Let's Pump Some Iron!", "Budding Blossom",
+      "Shooting for Victory"
+
+    ],
+    ["Red Maru", "Fantasy Pasa", "Nishino", "OG Taiki"],
   ),
   T(
     "Niigata",
@@ -1876,11 +2123,37 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Victory Cheer",
     ],
     [],
   ),
+
+  T(
+    "Niigata",
+    "2500",
+    "Mile",
+    "Dirt",
+    "Left",
+    "-",
+    1042,
+    1667,
+    "Straight",
+    2083,
+    "Before",
+    6,
+    4,
+    [
+      
+      
+      "Break It Down!",
+      "Victory Cheer",
+    ],
+    [],
+  ),
+
+  // Ooi
 
   T(
     "Ooi",
@@ -1897,9 +2170,10 @@ export const TRACKS = [
     2,
     2,
     ["Victoria por plancha", "Straightaway Spurt",
+      "Budding Blossom",
       "Louder! Tracen Cheer!"
     ],
-    ["Taiki Shuttle"],
+    ["OG Taiki", "OG Pasa"],
   ),
   T(
     "Ooi",
@@ -1919,8 +2193,9 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Victory Cheer",
     ],
     [],
   ),
@@ -1942,13 +2217,15 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Victory Cheer",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru"],
+    ["X. Oguri"],
   ),
 
+  // Sapporo
   T(
     "Sapporo",
     "1200",
@@ -1967,9 +2244,9 @@ export const TRACKS = [
       "Angling and Scheming",
       "Let's Pump Some Iron!",
       "Budding Blossom",
-      "Shooting For Victory",
+      "Shooting for Victory",
     ],
-    ["Nishino Flower", "Taiki Shuttle"],
+    ["Nishino", "OG Taiki"],
   ),
   T(
     "Sapporo",
@@ -1988,9 +2265,10 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Red Shift/LP1211-M",
+      "Condor's Fury",
     ],
     ["Red Maru", "Fantasy Pasa"],
   ),
@@ -2011,7 +2289,7 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Victory Cheer",
     ],
@@ -2035,11 +2313,11 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
-      "Victory Cheer",
+      "Bring on the Banquet!"
     ],
-    ["X. Oguri", "SMaru", "Kitasan"],
+    ["X. Oguri", "OG Kitasan", "NY Kitasan"],
   ),
   T(
     "Sapporo",
@@ -2058,14 +2336,38 @@ export const TRACKS = [
     [
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
+  ),
+
+  T(
+    "Sapporo",
+    "1000",
+    "Sprint",
+    "Dirt",
+    "Left",
+    "-",
+    417,
+    667,
+    "Final Corner",
+    833,
+    "After",
+    2,
+    2,
+    [
+      
+      
+      "Angling and Scheming",
+      "Let's Pump Some Iron!",
+      "Budding Blossom",
+      "Shooting for Victory",
+    ],
+    ["OG Taiki"],
   ),
   T(
     "Sapporo",
@@ -2084,8 +2386,32 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+    ],
+    [],
+  ),
+
+  T(
+    "Sapporo",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Right",
+    "-",
+    1000,
+    1600,
+    "Straight",
+    2000,
+    "Before",
+    6,
+    4,
+    [
+      
+      
+      "Break It Down!",
+      "Straightaway Spurt", 
+      "Victory Cheer",
     ],
     [],
   ),
@@ -2101,12 +2427,12 @@ export const TRACKS = [
     933,
     "Final Straight",
     1167,
-    "-",
+    "After",
     2,
     2,
     [ "Budding Blossom", "Straightaway Spurt",
       "Louder! Tracen Cheer!", "Victoria por plancha"],
-    ["Nishino Flower"],
+    ["Nishino", "Cheer Halo", "OG Pasa"],
   ),
   T(
     "Tokyo",
@@ -2126,13 +2452,14 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
+      "Break It Down!",
       "Straightaway Spurt",
       "Louder! Tracen Cheer!",
       "Victoria por plancha",
     ],
-    ["Nishino Flower", "Taiki Shuttle"],
+    ["Nishino", "OG Taiki", "OG Pasa", "Cheer Halo", "Ballroom Seiun"],
   ),
   T(
     "Tokyo",
@@ -2151,11 +2478,11 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
       "Shooting for Victory",
     ],
-    ["Taiki Shuttle", "Nishino Flower"],
+    ["OG Taiki", "Nishino"],
   ),
   T(
     "Tokyo",
@@ -2174,17 +2501,20 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Shooting for Victory",
       "Budding Blossom",
+      "Bring on the Banquet!",
+      "Red Shift/LP1211-M",
+      "Condor's Fury",
     ],
     [
       "X. Oguri",
-      "SMaru",
+      "NY Kitasan",
       "Red Maru",
       "Fantasy Pasa",
-      "Taiki Shuttle",
-      "Nishino Flower(??)",
+      "OG Taiki",
+      "Nishino",
     ],
   ),
   T(
@@ -2205,10 +2535,12 @@ export const TRACKS = [
       
       "Red Shift/LP1211-M",
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
+      "Condor's Fury",
     ],
-    ["Red Maru", "Fantasy Pasa", "X. Oguri", "SMaru"],
+    ["Red Maru", "Fantasy Pasa", "X. Oguri", "NY Kitasan"],
   ),
   T(
     "Tokyo",
@@ -2227,12 +2559,14 @@ export const TRACKS = [
     [
       
       
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Angling and Scheming",
       "Red Shift/LP1211-M",
+      "Condor's Fury",
+      "Bring on the Banquet!"
     ],
-    ["Red Maru", "Fantasy Pasa", "X. Oguri"],
+    ["Red Maru", "Fantasy Pasa", "X. Oguri", "NY Kitasan"],
   ),
   T(
     "Tokyo",
@@ -2251,11 +2585,12 @@ export const TRACKS = [
     [
       
       
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Moving Past and Beyond",
       "Angling and Scheming",
+      "Bring on the Banquet!",
     ],
-    [],
+    ["NY Kitasan", "OG Kitasan"],
   ),
   T(
     "Tokyo",
@@ -2275,11 +2610,10 @@ export const TRACKS = [
       
       
       "Straightaway Spurt",
-      "Louder! Tracen Cheer!",
       "Victory Cheer",
       "Break It Down!",
     ],
-    ["Kitasan", "Ballroom Seiun"],
+    ["OG Kitasan", "Ballroom Seiun"],
   ),
   T(
     "Tokyo",
@@ -2292,12 +2626,13 @@ export const TRACKS = [
     867,
     "Final Straight Uphill",
     1083,
-    "-",
+    "After",
     2,
     2,
     ["Budding Blossom", "Straightaway Spurt",
-      "Louder! Tracen Cheer!", "Victoria por plancha"],
-    [],
+      "Break It Down!",
+   "Victoria por plancha"],
+    ["OG Pasa"],
   ),
   T(
     "Tokyo",
@@ -2315,7 +2650,7 @@ export const TRACKS = [
     2,
     [ "Budding Blossom", "Straightaway Spurt",
       "Louder! Tracen Cheer!", "Victoria por plancha"],
-    [],
+    ["OG Pasa"],
   ),
   T(
     "Tokyo",
@@ -2335,14 +2670,14 @@ export const TRACKS = [
       
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Budding Blossom",
-      "Shooting for Victory",
+      "Break It Down!",
       "Straightaway Spurt",
       "Louder! Tracen Cheer!",
       "Victoria por plancha",
     ],
-    ["Taiki Shuttle"],
+    ["OG Taiki", "OG Pasa"],
   ),
   T(
     "Tokyo",
@@ -2361,11 +2696,39 @@ export const TRACKS = [
     [
       
       "Angling and Scheming",
-      "Let's Pump Some Iron",
+      "Let's Pump Some Iron!",
       "Red Shift/LP1211-M",
       "Moving Past and Beyond",
+      "Bring on the Banquet!",
+      "Condor's Fury"
     ],
-    ["X. Oguri", "SMaru", "Red Maru", "Fantasy Pasa"],
+    ["X. Oguri", "Red Maru", "Fantasy Pasa"],
+  ),
+
+T(
+    "Tokyo",
+    "2400",
+    "Medium",
+    "Dirt",
+    "Left",
+    "Stamina",
+    1000,
+    1600,
+    "Corner",
+    2000,
+    "After",
+    4,
+    3,
+    [
+      
+      "Angling and Scheming",
+      "Let's Pump Some Iron!",
+      "Victory Cheer",
+      "Moving Past and Beyond",
+      "Bring on the Banquet!",
+      
+    ],
+    [],
   ),
 ];
 

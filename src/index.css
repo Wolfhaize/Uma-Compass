@@ -500,6 +500,8 @@ tr.row-selected:hover { background: rgba(212,175,55,0.14); }
   color: #171207;
   font-weight: 600;
 }
+.option-btn.active .muted,
+.option-btn.active .small { color: #171207; opacity: 0.8; }
 
 .option-row-wide {
   display: grid;
@@ -1435,4 +1437,159 @@ a:focus-visible, .nav-link:focus-visible, .inline-link:focus-visible,
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-3);
+}
+
+/* ---------- Landing: start-here nudge ---------- */
+.landing-start-nudge {
+  color: var(--muted);
+  font-size: 14.2px;
+  margin: 6px 0 0;
+}
+.landing-start-nudge a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.landing-start-nudge a:hover { text-decoration: underline; }
+
+/* ---------- Mobile nav toggle (hidden on desktop) ---------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ---------- Backup controls (import/export) ---------- */
+.backup-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.backup-btn {
+  background: var(--panel-raised);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.backup-btn:hover { border-color: var(--accent); color: var(--accent); }
+.backup-message { font-size: 13px; }
+.backup-message-success { color: var(--accent-2); }
+.backup-message-error { color: var(--danger); }
+.sr-only-input {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Schedule / pull plans ---------- */
+.inline-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.inline-form input[type="text"],
+.inline-form select,
+.pull-plan-card select {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13.6px;
+}
+.inline-form input[type="text"] { flex: 1 1 180px; }
+.pull-plan-list { display: grid; gap: 14px; margin-bottom: 20px; }
+.pull-plan-card { margin-bottom: 0; }
+.chip-remove {
+  background: none;
+  border: none;
+  color: var(--muted);
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.chip-remove:hover { color: var(--danger); }
+
+/* ---------- Responsive breakpoints ---------- */
+@media (max-width: 860px) {
+  .app { padding: 18px 14px 48px; }
+  header h1 { font-size: 25px; }
+  .site-nav-inner { padding: var(--space-2) var(--space-3); gap: var(--space-3); }
+  .site-logo { width: 36px; height: 36px; }
+  .site-title { font-size: 16px; }
+
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 2px;
+    padding-top: 8px;
+  }
+  .nav-links-open { display: flex; }
+  .nav-link { width: 100%; }
+
+  .board-grid,
+  .landing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  table { font-size: 12.6px; }
+  thead th { font-size: 14px; }
+
+  .inline-form { flex-direction: column; align-items: stretch; }
+  .inline-form input[type="text"],
+  .inline-form select { flex: 1 1 auto; width: 100%; }
+
+  .backup-controls { flex-direction: column; align-items: stretch; }
+  .backup-btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 21px; }
+  .subtitle { font-size: 14px; }
+  .landing-card-title { font-size: 15.5px; }
+  .option-row, .option-row-wide { flex-direction: column; }
+  .chips { gap: 4px; }
+  .modal-backdrop { padding: 16px 8px; }
+  .modal-panel { padding: 16px; }
+  .apt-group-row { gap: 4px; }
+}
+
+/* Carat calculator form fields (Schedule page) */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+}
+.field select, .field input {
+  min-width: 160px;
+}
+.total-row td {
+  border-top: 2px solid var(--border, #444);
+  padding-top: 8px;
 }

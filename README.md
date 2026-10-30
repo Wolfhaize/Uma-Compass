@@ -1,8 +1,6 @@
 # Uma Compass
 
-A toolkit for Umamusume: Pretty Derby drafts and server tournaments — track reference, uma kit
-classification, draft/strategy planning, and a full tournament runner (brackets, groups, leagues)
-with Discord-ready result exports.
+A draft tool for Umamusume: Pretty Derby — track reference and strategy planning for drafts.
 
 **This project is in beta.** Some skill condition data may still be inaccurate — always
 double-check against [gametora.com](https://gametora.com/umamusume) when it matters.
@@ -11,13 +9,8 @@ double-check against [gametora.com](https://gametora.com/umamusume) when it matt
 
 - **Track Database** — every course with distance, surface, threshold, and last-spurt timing,
   plus the skills that tend to matter there.
-- **Uma Kit Library** — every uma's kit, classified by race phase, accel-vs-velocity, and
-  corner/straight focus.
 - **Strategy Planner** — filter by distance, accel/spurt shape, and surface to find matching
   tracks, skills, and umas.
-- **Draft Board** — manage your saved tracks and umas, with recommendations.
-- **Tournaments** — run knockout, group+knockout, or league formats for 3-vs-3-vs-3 server
-  competitions, with standings, brackets, and one-click Discord result exports.
 
 ## Setup
 

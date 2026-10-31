@@ -1,37 +1,48 @@
 import React, { useMemo, useState } from 'react'
 import { TRACKS } from '../data/tracks.js'
 import { useDraft, trackKey } from '../context/DraftContext.jsx'
-import { topSkills, topUmas, accelFocus, ACCEL_FOCUS_LABELS, DISTANCE_ORDER, skillFilterOptions, umaFilterOptions, matchesSelection } from '../utils/recommend.js'
+import { topSkills, topUmas, accelTags, countByOption, ACCEL_FOCUS_LABELS, DISTANCE_ORDER, matchesSelection } from '../utils/recommend.js'
+import {
+  ACCEL_OPTIONS, SURFACE_OPTIONS, SKILL_OPTIONS, UMA_OPTIONS, EMPTY_FILTERS,
+  filtersFromSearch, filtersToSearch, filterTracks, hasExcludedSkill, describeFilters,
+} from '../utils/filters.js'
 import TrackDetailModal from '../components/TrackDetailModal.jsx'
 import CopyButton from '../components/CopyButton.jsx'
-import { formatDraftPoolForDiscord } from '../utils/discordExport.js'
-
-const ACCEL_OPTIONS = [
-  { key: 'final', label: 'Final Corner Accel (C4)', desc: 'Late Race starts somewhere on the final corner/very close to it.' },
-  { key: 'multi', label: 'Multi-Corner Accel (C3)', desc: 'Late Race starts on the 3rd corner.' },
-  { key: 'straight', label: 'Straight Accel', desc: 'Late Race starts on a straight/very close to it.' },
-]
-
-const SKILL_OPTIONS = skillFilterOptions(TRACKS)
-const UMA_OPTIONS = umaFilterOptions(TRACKS)
+import { formatPlanForDiscord } from '../utils/discordExport.js'
 
 const FILTERS_STORAGE_KEY = 'draftCompass.strategyFilters.v1'
 
+const PRESETS_STORAGE_KEY = 'draftCompass.strategyPresets.v1'
+const HIDE_TAKEN_KEY = 'draftCompass.hideTaken.v1'
+
 function loadFilters() {
+  // A shared link wins over whatever was saved locally.
+  const fromUrl = filtersFromSearch(window.location.search)
+  if (fromUrl) return fromUrl
   try {
     const raw = localStorage.getItem(FILTERS_STORAGE_KEY)
-    if (!raw) return { distances: [], accels: [], surfaces: [], skillPicks: [], umaPicks: [], matchMode: 'all' }
+    if (!raw) return { ...EMPTY_FILTERS }
     const parsed = JSON.parse(raw)
     return {
       distances: Array.isArray(parsed.distances) ? parsed.distances : [],
       accels: Array.isArray(parsed.accels) ? parsed.accels : [],
       surfaces: Array.isArray(parsed.surfaces) ? parsed.surfaces : [],
       skillPicks: Array.isArray(parsed.skillPicks) ? parsed.skillPicks : [],
+      excludeSkills: Array.isArray(parsed.excludeSkills) ? parsed.excludeSkills : [],
       umaPicks: Array.isArray(parsed.umaPicks) ? parsed.umaPicks : [],
       matchMode: parsed.matchMode === 'any' ? 'any' : 'all',
     }
   } catch {
-    return { distances: [], accels: [], surfaces: [], skillPicks: [], umaPicks: [], matchMode: 'all' }
+    return { ...EMPTY_FILTERS }
+  }
+}
+
+function loadPresets() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(PRESETS_STORAGE_KEY) || '[]')
+    return Array.isArray(parsed) ? parsed.filter(p => p && p.name && p.filters) : []
+  } catch {
+    return []
   }
 }
 
@@ -50,17 +61,42 @@ export default function StrategyPlanner() {
   const [accels, setAccels] = useState(initialFilters.accels)
   const [surfaces, setSurfaces] = useState(initialFilters.surfaces)
   const [skillPicks, setSkillPicks] = useState(initialFilters.skillPicks)
+  const [excludeSkills, setExcludeSkills] = useState(initialFilters.excludeSkills || [])
+  const [skillMode, setSkillMode] = useState('require') // what clicking a skill button does
   const [umaPicks, setUmaPicks] = useState(initialFilters.umaPicks)
+  const [presets, setPresets] = useState(loadPresets)
+  const [presetName, setPresetName] = useState('')
   const [matchMode, setMatchMode] = useState(initialFilters.matchMode)
   const [confirmingAdd, setConfirmingAdd] = useState(false)
   const [selectedTrack, setSelectedTrack] = useState(null)
-  const { selectedKeys, toggleTrack, isTrackTaken, toggleTrackTaken } = useDraft()
+  const { selectedKeys, toggleTrack, isTrackTaken, toggleTrackTaken, setPicksOpen, takenTrackKeys } = useDraft()
+  const [hideTaken, setHideTaken] = useState(() => {
+    try { return localStorage.getItem(HIDE_TAKEN_KEY) === '1' } catch { return false }
+  })
+  const takenSet = useMemo(() => new Set(takenTrackKeys), [takenTrackKeys])
+  const isHidden = t => hideTaken && takenSet.has(trackKey(t))
+  function toggleHideTaken(v) {
+    setHideTaken(v)
+    try { localStorage.setItem(HIDE_TAKEN_KEY, v ? '1' : '0') } catch { /* ignore */ }
+  }
 
   React.useEffect(() => {
     try {
-      localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify({ distances, accels, surfaces, skillPicks, umaPicks, matchMode }))
+      localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify({ distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode }))
     } catch { /* ignore */ }
-  }, [distances, accels, surfaces, skillPicks, umaPicks, matchMode])
+    // Keep the address bar equal to the shareable link for the current filters.
+    try {
+      const search = filtersToSearch({ distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode })
+      window.history.replaceState(window.history.state, '', window.location.pathname + search + window.location.hash)
+    } catch { /* ignore */ }
+  }, [distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode])
+
+  function getShareUrl() {
+    return window.location.origin + window.location.pathname +
+      filtersToSearch({ distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode })
+  }
+
+  const currentFilters = { distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode }
 
   function toggleDistance(d) {
     setDistances(prev => prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d])
@@ -72,36 +108,109 @@ export default function StrategyPlanner() {
     setSurfaces(prev => prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s])
   }
   function toggleSkillPick(k) {
-    setSkillPicks(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
+    if (skillMode === 'exclude') {
+      setSkillPicks(prev => prev.filter(x => x !== k))
+      setExcludeSkills(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
+    } else {
+      setExcludeSkills(prev => prev.filter(x => x !== k))
+      setSkillPicks(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
+    }
   }
   function toggleUmaPick(k) {
     setUmaPicks(prev => prev.includes(k) ? prev.filter(x => x !== k) : [...prev, k])
   }
   function resetFilters() {
     setSkillPicks([])
+    setExcludeSkills([])
     setUmaPicks([])
     setDistances([])
     setAccels([])
     setSurfaces([])
   }
 
-  const started = distances.length > 0 || accels.length > 0 || surfaces.length > 0 || skillPicks.length > 0 || umaPicks.length > 0
+  const started = distances.length > 0 || accels.length > 0 || surfaces.length > 0 || skillPicks.length > 0 || excludeSkills.length > 0 || umaPicks.length > 0
+
+  const hasExcluded = t => hasExcludedSkill(t, excludeSkills)
 
   const matches = useMemo(() => {
     if (!started) return []
-    return TRACKS.filter(t => {
+    return filterTracks(currentFilters, hideTaken ? isHidden : null)
+  }, [started, distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode, hideTaken, takenSet])
+
+  // Live counts for the skill / uma buttons: how many tracks you'd get with that
+  // option, given the distance / accel / surface filters and the other picks.
+  const baseTracks = useMemo(() => TRACKS.filter(t => {
+    if (distances.length && !distances.includes(t.type)) return false
+    if (accels.length && !accelTags(t).some(f => accels.includes(f))) return false
+    if (surfaces.length && !surfaces.includes(t.surface)) return false
+    if (hasExcluded(t)) return false
+    if (isHidden(t)) return false
+    return true
+  }), [distances, accels, surfaces, excludeSkills, hideTaken, takenSet])
+
+  const skillCounts = useMemo(() => countByOption(baseTracks.filter(t =>
+    matchesSelection(t, 'accels', umaPicks, matchMode) &&
+    (matchMode === 'all' ? matchesSelection(t, 'skills', skillPicks, 'all') : true)
+  ), 'skills'), [baseTracks, skillPicks, umaPicks, matchMode])
+
+  const umaCounts = useMemo(() => countByOption(baseTracks.filter(t =>
+    matchesSelection(t, 'skills', skillPicks, matchMode) &&
+    (matchMode === 'all' ? matchesSelection(t, 'accels', umaPicks, 'all') : true)
+  ), 'accels'), [baseTracks, skillPicks, umaPicks, matchMode])
+
+  // Live counts for the accel cards: tracks that pass every OTHER filter.
+  const accelCounts = useMemo(() => {
+    const pool = TRACKS.filter(t => {
       if (distances.length && !distances.includes(t.type)) return false
-      if (accels.length && !accels.includes(accelFocus(t))) return false
       if (surfaces.length && !surfaces.includes(t.surface)) return false
-      if (!matchesSelection(t, 'skills', skillPicks, matchMode)) return false
-      if (!matchesSelection(t, 'accels', umaPicks, matchMode)) return false
-      return true
-    }).sort((a, b) => {
-      const ai = DISTANCE_ORDER.indexOf(a.type), bi = DISTANCE_ORDER.indexOf(b.type)
-      if (ai !== bi) return ai - bi
-      return a.location.localeCompare(b.location)
+      if (hasExcluded(t)) return false
+      if (isHidden(t)) return false
+      return matchesSelection(t, 'skills', skillPicks, matchMode) && matchesSelection(t, 'accels', umaPicks, matchMode)
     })
-  }, [started, distances, accels, surfaces, skillPicks, umaPicks, matchMode])
+    const counts = {}
+    for (const t of pool) for (const f of accelTags(t)) counts[f] = (counts[f] || 0) + 1
+    return counts
+  }, [distances, surfaces, excludeSkills, skillPicks, umaPicks, matchMode, hideTaken, takenSet])
+
+  function savePreset() {
+    const name = presetName.trim().slice(0, 40)
+    if (!name || !started) return
+    const next = [
+      ...presets.filter(p => p.name.toLowerCase() !== name.toLowerCase()),
+      { id: Date.now(), name, filters: { distances, accels, surfaces, skillPicks, excludeSkills, umaPicks, matchMode } },
+    ]
+    setPresets(next)
+    setPresetName('')
+    try { localStorage.setItem(PRESETS_STORAGE_KEY, JSON.stringify(next)) } catch { /* ignore */ }
+  }
+
+  function loadPreset(preset) {
+    const f = { ...EMPTY_FILTERS, ...preset.filters }
+    setDistances(f.distances); setAccels(f.accels); setSurfaces(f.surfaces)
+    setSkillPicks(f.skillPicks); setExcludeSkills(f.excludeSkills || []); setUmaPicks(f.umaPicks)
+    setMatchMode(f.matchMode === 'any' ? 'any' : 'all')
+    setConfirmingAdd(false)
+  }
+
+  function deletePreset(id) {
+    const next = presets.filter(p => p.id !== id)
+    setPresets(next)
+    try { localStorage.setItem(PRESETS_STORAGE_KEY, JSON.stringify(next)) } catch { /* ignore */ }
+  }
+
+  // Removable chips for every active filter.
+  const activeChips = [
+    ...distances.map(v => ({ id: 'd' + v, label: v, remove: () => setDistances(p => p.filter(x => x !== v)) })),
+    ...accels.map(v => ({ id: 'a' + v, label: ACCEL_OPTIONS.find(o => o.key === v)?.label || v, remove: () => setAccels(p => p.filter(x => x !== v)) })),
+    ...surfaces.map(v => ({ id: 's' + v, label: v, remove: () => setSurfaces(p => p.filter(x => x !== v)) })),
+    ...skillPicks.map(v => ({ id: 'sk' + v, label: SKILL_OPTIONS.find(o => o.key === v)?.label || v, remove: () => setSkillPicks(p => p.filter(x => x !== v)) })),
+    ...excludeSkills.map(v => ({ id: 'xs' + v, label: 'Not: ' + (SKILL_OPTIONS.find(o => o.key === v)?.label || v), exclude: true, remove: () => setExcludeSkills(p => p.filter(x => x !== v)) })),
+    ...umaPicks.map(v => ({ id: 'u' + v, label: UMA_OPTIONS.find(o => o.key === v)?.label || v, remove: () => setUmaPicks(p => p.filter(x => x !== v)) })),
+  ]
+
+  function scrollToResults() {
+    document.getElementById('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const skills = useMemo(() => topSkills(matches, 16), [matches])
   const umas = useMemo(() => topUmas(matches, 16), [matches])
@@ -117,6 +226,7 @@ export default function StrategyPlanner() {
       if (!selectedKeys.includes(trackKey(t))) toggleTrack(t)
     }
     setConfirmingAdd(false)
+    setPicksOpen(true)
   }
 
   return (
@@ -128,6 +238,54 @@ export default function StrategyPlanner() {
         </div>
         {started && <button className="reset" onClick={resetFilters}>Reset filters</button>}
       </header>
+
+      {activeChips.length > 0 && (
+        <div className="active-filters" aria-label="Active filters">
+          {activeChips.map(c => (
+            <button
+              key={c.id}
+              className={'filter-chip' + (c.exclude ? ' exclude' : '')}
+              onClick={c.remove}
+              title="Remove this filter"
+            >
+              {c.label} <span aria-hidden="true">×</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      <label className="hide-taken-toggle">
+        <input type="checkbox" checked={hideTaken} onChange={e => toggleHideTaken(e.target.checked)} />
+        Hide tracks marked as taken{takenTrackKeys.length > 0 ? ` (${takenTrackKeys.length} taken)` : ''}
+      </label>
+
+      <section className="board-section presets">
+        <h2>Saved Presets</h2>
+        {presets.length === 0 && <p className="muted small">Set some filters, name them below, and save them to reuse later.</p>}
+        {presets.length > 0 && (
+          <div className="option-row">
+            {presets.map(p => (
+              <span key={p.id} className="preset-item">
+                <button className="option-btn" onClick={() => loadPreset(p)} title="Load this preset">{p.name}</button>
+                <button className="preset-delete" onClick={() => deletePreset(p.id)} aria-label={`Delete preset ${p.name}`}>×</button>
+              </span>
+            ))}
+          </div>
+        )}
+        {started && (
+          <div className="preset-save">
+            <input
+              type="text"
+              value={presetName}
+              maxLength={40}
+              placeholder="Name this filter set, e.g. Sprint turf C4"
+              onChange={e => setPresetName(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter') savePreset() }}
+            />
+            <button className="reset" onClick={savePreset} disabled={!presetName.trim()}>Save preset</button>
+          </div>
+        )}
+      </section>
 
       <section className="board-section">
         <h2>1. Distance Focus</h2>
@@ -147,7 +305,7 @@ export default function StrategyPlanner() {
 
       <section className="board-section">
         <h2>2. Accel / Spurt Shape</h2>
-        <p className="muted small">Where do you want the race to be won?</p>
+        <p className="muted small">Valid accelerations for the track</p>
         <div className="option-row option-row-wide">
           {ACCEL_OPTIONS.map(o => (
             <button
@@ -155,7 +313,7 @@ export default function StrategyPlanner() {
               className={'option-card' + (accels.includes(o.key) ? ' active' : '')}
               onClick={() => toggleAccel(o.key)}
             >
-              <span className="option-card-title">{o.label}</span>
+              <span className="option-card-title">{o.label} <span className="muted small">({accelCounts[o.key] || 0})</span></span>
               <span className="option-card-desc">{o.desc}</span>
             </button>
           ))}
@@ -166,7 +324,7 @@ export default function StrategyPlanner() {
         <h2>3. Surface</h2>
         <p className="muted small">Narrow down to Turf, Dirt, or both.</p>
         <div className="option-row">
-          {['Turf', 'Dirt'].map(s => (
+          {SURFACE_OPTIONS.map(s => (
             <button
               key={s}
               className={'option-btn' + (surfaces.includes(s) ? ' active' : '')}
@@ -180,15 +338,20 @@ export default function StrategyPlanner() {
 
       <section className="board-section">
         <h2>4. Accel Skills</h2>
-        <p className="muted small">Pick the accel skills you plan to bring (e.g. Bring on the Banquet!). The number is how many tracks list that skill.</p>
+        <p className="muted small">Pick the accel skills you plan to bring (e.g. Bring on the Banquet!), or switch to “Exclude it” to drop tracks that list a skill you can't get. The number is how many tracks match your current filters and list that skill.</p>
+        <div className="option-row">
+          <span className="muted small">Clicking a skill will:</span>
+          <button className={'option-btn' + (skillMode === 'require' ? ' active' : '')} onClick={() => setSkillMode('require')}>Require it</button>
+          <button className={'option-btn' + (skillMode === 'exclude' ? ' active' : '')} onClick={() => setSkillMode('exclude')}>Exclude it</button>
+        </div>
         <div className="option-row">
           {SKILL_OPTIONS.map(o => (
             <button
               key={o.key}
-              className={'option-btn' + (skillPicks.includes(o.key) ? ' active' : '')}
+              className={'option-btn' + (skillPicks.includes(o.key) ? ' active' : excludeSkills.includes(o.key) ? ' excluded' : (skillCounts.get(o.key) ? '' : ' option-zero'))}
               onClick={() => toggleSkillPick(o.key)}
             >
-              {o.label} <span className="muted small">({o.count})</span>
+              {o.label} <span className="muted small">({excludeSkills.includes(o.key) ? 'excluded' : (skillCounts.get(o.key) || 0)})</span>
             </button>
           ))}
         </div>
@@ -201,10 +364,10 @@ export default function StrategyPlanner() {
           {UMA_OPTIONS.map(o => (
             <button
               key={o.key}
-              className={'option-btn' + (umaPicks.includes(o.key) ? ' active' : '')}
+              className={'option-btn' + (umaPicks.includes(o.key) ? ' active' : (umaCounts.get(o.key) ? '' : ' option-zero'))}
               onClick={() => toggleUmaPick(o.key)}
             >
-              {o.label} <span className="muted small">({o.count})</span>
+              {o.label} <span className="muted small">({umaCounts.get(o.key) || 0})</span>
             </button>
           ))}
         </div>
@@ -233,36 +396,8 @@ export default function StrategyPlanner() {
 
       {started && (
         <>
-          <section className="board-section">
-            <div className="track-hub-header" style={{ marginBottom: 0 }}>
-              <h2 style={{ margin: 0 }}>Matching Tracks ({matches.length})</h2>
-              {matches.length > 0 && (
-                <div className="header-btn-row">
-                  <CopyButton
-                    label="Copy plan for Discord"
-                    getText={() => formatDraftPoolForDiscord(matches)}
-                  />
-                  {!confirmingAdd && (
-                    <button className="reset" onClick={() => setConfirmingAdd(true)}>Add All to My Picks</button>
-                  )}
-                </div>
-              )}
-            </div>
-            {confirmingAdd && (
-              <div className="inline-confirm">
-                <span>
-                  {newTrackCount > 0
-                    ? `Add these ${newTrackCount} track${newTrackCount !== 1 ? 's' : ''} to your real draft pool?`
-                    : 'All of these tracks are already in your draft pool.'}
-                </span>
-                <div className="inline-confirm-actions">
-                  {newTrackCount > 0 && (
-                    <button className="confirm-yes" onClick={addAllToDraft}>Yes, add them</button>
-                  )}
-                  <button className="confirm-no" onClick={() => setConfirmingAdd(false)}>Cancel</button>
-                </div>
-              </div>
-            )}
+          <section className="board-section" id="results">
+            <h2 style={{ margin: 0 }}>Matching Tracks ({matches.length})</h2>
           </section>
 
           <div className="board-grid">
@@ -290,7 +425,7 @@ export default function StrategyPlanner() {
                     <th>Distance</th>
                     <th>Type</th>
                     <th>Surface</th>
-                    <th>Accel Focus</th>
+                    <th>Valid Accels</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -310,7 +445,7 @@ export default function StrategyPlanner() {
                         <td onClick={() => setSelectedTrack(t)}>{t.distance}m</td>
                         <td onClick={() => setSelectedTrack(t)}>{t.type}</td>
                         <td onClick={() => setSelectedTrack(t)}>{t.surface}</td>
-                        <td onClick={() => setSelectedTrack(t)}>{ACCEL_FOCUS_LABELS[accelFocus(t)]}</td>
+                        <td onClick={() => setSelectedTrack(t)}>{accelTags(t).map(f => ACCEL_FOCUS_LABELS[f]).join(' · ')}</td>
                       </tr>
                     )
                   })}
@@ -340,17 +475,69 @@ export default function StrategyPlanner() {
                 className={'draft-toggle-btn' + (selectedKeys.includes(trackKey(selectedTrack)) ? ' active' : '')}
                 onClick={() => toggleTrack(selectedTrack)}
               >
-                {selectedKeys.includes(trackKey(selectedTrack)) ? '✓ In Draft Pool' : '+ Add to Draft Pool'}
+                {selectedKeys.includes(trackKey(selectedTrack)) ? 'In Draft Pool' : '+ Add to Draft Pool'}
               </button>
               <button
                 className={'taken-toggle-btn' + (isTrackTaken(selectedTrack) ? ' active' : '')}
                 onClick={() => toggleTrackTaken(selectedTrack)}
               >
-                {isTrackTaken(selectedTrack) ? 'Taken ✓ (click to unmark)' : 'Mark as taken'}
+                {isTrackTaken(selectedTrack) ? 'Taken (click to unmark)' : 'Mark as taken'}
               </button>
             </>
           }
         />
+      )}
+
+      {started && (
+        <>
+          <div className="floating-spacer" aria-hidden="true" />
+          <div className="floating-cluster">
+            {confirmingAdd && (
+              <div className="floating-confirm">
+                <span>
+                  {newTrackCount > 0
+                    ? `Add ${newTrackCount} track${newTrackCount !== 1 ? 's' : ''} to your draft pool?`
+                    : 'All of these are already in your draft pool.'}
+                </span>
+                <div className="inline-confirm-actions">
+                  {newTrackCount > 0 && (
+                    <button className="confirm-yes" onClick={addAllToDraft}>Yes, add</button>
+                  )}
+                  <button className="confirm-no" onClick={() => setConfirmingAdd(false)}>Cancel</button>
+                </div>
+              </div>
+            )}
+            <CopyButton
+              className="floating-action"
+              label="Copy share link"
+              getText={getShareUrl}
+            />
+            {matches.length > 0 && (
+              <>
+                <CopyButton
+                  className="floating-action"
+                  label="Copy plan"
+                  getText={() => formatPlanForDiscord(matches, describeFilters(currentFilters), getShareUrl())}
+                />
+                {!confirmingAdd && (
+                  <button className="floating-action" onClick={() => setConfirmingAdd(true)}>
+                    + Add all to picks
+                  </button>
+                )}
+              </>
+            )}
+            <button className="floating-action" onClick={() => setPicksOpen(true)}>
+              My picks ({selectedKeys.length})
+            </button>
+            <button
+              className={'floating-results' + (matches.length === 0 ? ' empty' : '')}
+              onClick={scrollToResults}
+              title="Jump to matching tracks"
+            >
+              Results <b>{matches.length}</b>
+            </button>
+          </div>
+        </>
       )}
     </div>
   )

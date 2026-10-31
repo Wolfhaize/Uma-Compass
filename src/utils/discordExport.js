@@ -3,87 +3,50 @@
 // Plain-text formatters tuned for pasting straight into a Discord message —
 // bold via **, code blocks for tables, no markdown Discord doesn't support.
 
-import UMA_PROFILES from '../data/uma_profiles.json'
-
-const MEDAL = { 1: '🥇', 2: '🥈', 3: '🥉' }
-
-function umaNameFor(umaId) {
-  if (!umaId) return null
-  return UMA_PROFILES.find(u => u.cardId === umaId)?.name || null
-}
+const ACCEL_SHORT = { final: 'C4', multi: 'C3', straight: 'Straight' }
 
 function pad(str, len) {
   str = String(str)
   return str.length >= len ? str : str + ' '.repeat(len - str.length)
 }
 
-export function formatDraftPoolForDiscord(tracks, umas = []) {
-  const lines = [`**🏇 Draft Pool — ${tracks.length} track${tracks.length !== 1 ? 's' : ''}**`]
+function accelText(t) {
+  return (t.focus || []).map(f => ACCEL_SHORT[f] || f).join('/')
+}
+
+// Strategy Planner export: the filters used + the matching tracks (+ share link).
+// `filterLines` is an array of plain strings like "Surface: Turf".
+export function formatPlanForDiscord(tracks, filterLines = [], shareUrl = '') {
+  const lines = [`**Draft Plan — ${tracks.length} track${tracks.length !== 1 ? 's' : ''}**`]
+  if (filterLines.length) {
+    lines.push('**Filters:**')
+    for (const f of filterLines) lines.push(`• ${f}`)
+  }
   if (tracks.length) {
     lines.push('```')
     for (const t of tracks) {
-      lines.push(`${pad(t.location, 10)} ${pad(t.distance + 'm', 6)} ${pad(t.type, 8)} ${pad(t.surface, 6)} ${t.handed}`)
+      lines.push(`${pad(t.location, 10)} ${pad(t.distance + 'm', 6)} ${pad(t.type, 8)} ${pad(t.surface, 5)} ${accelText(t)}`)
     }
     lines.push('```')
   } else {
-    lines.push('_No tracks selected._')
+    lines.push('_No tracks match these filters._')
   }
-  if (umas.length) {
-    lines.push('', `**My Umas (${umas.length}):** ${umas.map(u => u.name).join(', ')}`)
-  }
+  if (shareUrl) lines.push(`Open these filters: <${shareUrl}>`)
   return lines.join('\n')
 }
 
-export function formatMatchResultForDiscord(match, players) {
-  const name = (pid) => players.find(p => p.id === pid)?.name || '???'
-  // finishOrder holds the actual per-uma crossing order (umaId + playerId),
-  // so we can show which uma earned each placement, not just who ran it.
-  const umaFor = (pid, place) => {
-    const entry = (match.finishOrder || [])[place - 1]
-    if (entry && entry.playerId === pid) return umaNameFor(entry.umaId)
-    const anyEntry = (match.finishOrder || []).find(e => e.playerId === pid)
-    return anyEntry ? umaNameFor(anyEntry.umaId) : null
+// "My Picks" export. `isTaken(track)` marks tracks someone else already took.
+export function formatPicksForDiscord(tracks, isTaken = () => false) {
+  const lines = [`**My Picks — ${tracks.length} track${tracks.length !== 1 ? 's' : ''}**`]
+  if (!tracks.length) {
+    lines.push('_No tracks picked yet._')
+    return lines.join('\n')
   }
-  const label = match.label || `Round ${match.round}`
-  const lines = [`**🏁 ${label}**`]
-  const placements = [...(match.placements || [])].sort((a, b) => a.place - b.place)
-  for (const p of placements) {
-    const uma = umaFor(p.playerId, p.place)
-    const runner = name(p.playerId)
-    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${uma ? `${uma} (${runner})` : runner}`)
-  }
-  if (match.note) lines.push(`_${match.note}_`)
-  return lines.join('\n')
-}
-
-export function formatStandingsForDiscord(standings, title = 'Standings') {
-  const lines = [`**📊 ${title}**`, '```']
-  lines.push(`${pad('#', 3)} ${pad('Player', 16)} ${pad('Pts', 4)} ${pad('Races', 6)} 1st 2nd 3rd`)
-  standings.forEach((s, i) => {
-    lines.push(`${pad(i + 1, 3)} ${pad(s.name, 16)} ${pad(s.points, 4)} ${pad(s.races, 6)} ${pad(s.firsts, 3)} ${pad(s.seconds, 3)} ${pad(s.thirds, 3)}`)
-  })
   lines.push('```')
-  return lines.join('\n')
-}
-
-export function formatPodiumForDiscord(tournamentName, finalMatch, losersMatch, players) {
-  const name = (pid) => players.find(p => p.id === pid)?.name || '???'
-  const umaFor = (pid, place) => {
-    const entry = (finalMatch.finishOrder || [])[place - 1]
-    if (entry && entry.playerId === pid) return umaNameFor(entry.umaId)
-    const anyEntry = (finalMatch.finishOrder || []).find(e => e.playerId === pid)
-    return anyEntry ? umaNameFor(anyEntry.umaId) : null
+  for (const t of tracks) {
+    const taken = isTaken(t) ? '  [TAKEN]' : ''
+    lines.push(`${pad(t.location, 10)} ${pad(t.distance + 'm', 6)} ${pad(t.type, 8)} ${pad(t.surface, 5)} ${accelText(t)}${taken}`)
   }
-  const lines = [`**🏆 ${tournamentName} — Final Standings**`]
-  const placements = [...(finalMatch.placements || [])].sort((a, b) => a.place - b.place)
-  for (const p of placements) {
-    const uma = umaFor(p.playerId, p.place)
-    const runner = name(p.playerId)
-    lines.push(`${MEDAL[p.place] || `#${p.place}`} ${uma ? `${uma} (${runner})` : runner}`)
-  }
-  if (losersMatch) {
-    const losers = [...(losersMatch.placements || [])].sort((a, b) => a.place - b.place)
-    lines.push('', ...losers.map(p => `${p.place + 3}th — ${name(p.playerId)}`))
-  }
+  lines.push('```')
   return lines.join('\n')
 }

@@ -31,7 +31,7 @@ export default function CopyButton({ getText, label = 'Copy for Discord', classN
 
   return (
     <button type="button" className={`copy-btn${copied ? ' copied' : ''}${error ? ' errored' : ''} ${className}`} onClick={handleClick}>
-      {copied ? '✓ Copied' : error ? 'Copy failed' : `📋 ${label}`}
+      {copied ? 'Copied' : error ? 'Copy failed' : label}
     </button>
   )
 }

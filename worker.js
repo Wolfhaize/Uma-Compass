@@ -1,8 +1,9 @@
+import { filtersFromSearch, filterTracks, filterSummaryParts, describeFilters } from './src/utils/filters.js';
+
 const SITE_URL = 'https://uma-compass.wolfhaize.workers.dev';
 const DEFAULT_IMAGE = `${SITE_URL}/tazuna-modified.png`;
 
-// Per-route embed content. Keys are exact pathnames; `/tournaments/:id`
-// is handled separately below since it's dynamic.
+// Per-route embed content. Keys are exact pathnames.
 const ROUTE_META = {
   '/': {
     title: 'Uma Compass (Beta)',
@@ -12,15 +13,28 @@ const ROUTE_META = {
     title: 'Track Reference — Uma Compass',
     description: 'Browse every track: distances, surfaces, corners, straights, and elevation, all in one reference.',
   },
-  '/strategy': {
-    title: 'Strategy Planner — Uma Compass',
-    description: 'Plan race strategy phase-by-phase against real track data.',
-  },
 };
 
-function metaForPath(pathname) {
-  if (ROUTE_META[pathname]) return ROUTE_META[pathname];
-  return ROUTE_META['/'];
+// A shared planner link (/?d=Sprint&s=Turf&a=final ...) gets a preview that
+// describes the filters and how many tracks they match.
+function plannerMetaFromSearch(search) {
+  const filters = filtersFromSearch(search);
+  if (!filters) return null;
+  const count = filterTracks(filters).length;
+  const parts = filterSummaryParts(filters);
+  const shown = parts.length > 4 ? parts.slice(0, 4).join(' · ') + ` +${parts.length - 4} more` : parts.join(' · ');
+  return {
+    title: `Uma Compass: ${shown}`,
+    description: `${count} matching track${count === 1 ? '' : 's'}. ${describeFilters(filters).join(' | ')}`,
+  };
+}
+
+function metaForRequest(pathname, search) {
+  if (pathname === '/') {
+    const shared = plannerMetaFromSearch(search);
+    if (shared) return shared;
+  }
+  return ROUTE_META[pathname] || ROUTE_META['/'];
 }
 
 // Rewrite the placeholder <meta> tags in the HTML to match the route.
@@ -77,8 +91,8 @@ export default {
       return response;
     }
 
-    const meta = metaForPath(url.pathname);
-    const canonicalUrl = `${SITE_URL}${url.pathname}`;
+    const meta = metaForRequest(url.pathname, url.search);
+    const canonicalUrl = `${SITE_URL}${url.pathname}${url.search}`;
 
     return new HTMLRewriter()
       .on('title', new TitleRewriter(meta))

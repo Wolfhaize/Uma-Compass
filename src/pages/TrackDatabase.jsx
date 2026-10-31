@@ -3,8 +3,9 @@ import { TRACKS, LOCATIONS, SURFACES, TYPES, HANDEDS } from '../data/tracks.js'
 import Attribution from '../components/Attribution.jsx'
 import { useDraft } from '../context/DraftContext.jsx'
 import TrackDetailModal from '../components/TrackDetailModal.jsx'
+import { accelTags, ACCEL_FOCUS_LABELS } from '../utils/recommend.js'
 
-const emptyFilter = { location: '', surface: '', type: '', handed: '' }
+const emptyFilter = { location: '', surface: '', type: '', handed: '', accel: '' }
 
 function Chip({ children }) {
   return <span className="chip">{children}</span>
@@ -24,6 +25,7 @@ export default function TrackDatabase() {
       if (filter.surface && t.surface !== filter.surface) return false
       if (filter.type && t.type !== filter.type) return false
       if (filter.handed && t.handed !== filter.handed) return false
+      if (filter.accel && !accelTags(t).includes(filter.accel)) return false
       if (query) {
         const q = query.toLowerCase()
         const hay = [t.location, t.distance, t.type, t.surface, t.handed, t.threshold,
@@ -63,7 +65,7 @@ export default function TrackDatabase() {
         {selectedKeys.length > 0 && (
           <div className="draft-pool-row">
             <span className="draft-pool-pill">
-              🏇 {selectedKeys.length} in Draft Pool
+              {selectedKeys.length} in Draft Pool
             </span>
             <button
               className="clear-pool-btn"
@@ -105,7 +107,11 @@ export default function TrackDatabase() {
           <option value="">All Handedness</option>
           {HANDEDS.map(h => <option key={h} value={h}>{h}</option>)}
         </select>
-        {(filter.location || filter.surface || filter.type || filter.handed || query) && (
+        <select value={filter.accel} onChange={e => setFilter(f => ({ ...f, accel: e.target.value }))}>
+          <option value="">All Accels</option>
+          {Object.entries(ACCEL_FOCUS_LABELS).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
+        </select>
+        {(filter.location || filter.surface || filter.type || filter.handed || filter.accel || query) && (
           <button className="reset" onClick={() => { setFilter(emptyFilter); setQuery('') }}>Reset</button>
         )}
       </div>
@@ -122,6 +128,7 @@ export default function TrackDatabase() {
               <th onClick={() => toggleSort('handed')}>Handed{sortIndicator('handed')}</th>
               <th onClick={() => toggleSort('threshold')}>Threshold Stat{sortIndicator('threshold')}</th>
               <th onClick={() => toggleSort('lastSpurtStart')}>Last Spurt Start{sortIndicator('lastSpurtStart')}</th>
+              <th>Valid Accels</th>
               <th>Skills / Accels</th>
               <th>Taken</th>
             </tr>
@@ -146,6 +153,9 @@ export default function TrackDatabase() {
                 <td onClick={() => setSelected(t)}>{t.handed}</td>
                 <td onClick={() => setSelected(t)}>{t.threshold}</td>
                 <td onClick={() => setSelected(t)}>{t.lastSpurtStart}m ({t.beforeAfter})</td>
+                <td onClick={() => setSelected(t)}>
+                  {accelTags(t).map(f => <Chip key={f}>{ACCEL_FOCUS_LABELS[f]}</Chip>)}
+                </td>
                 <td className="skills-cell" onClick={() => setSelected(t)}>
                   {t.skills.slice(0, 3).map((s, j) => <Chip key={j}>{s}</Chip>)}
                   {t.skills.length > 3 && <span className="muted">+{t.skills.length - 3} more</span>}
@@ -155,14 +165,14 @@ export default function TrackDatabase() {
                     className={'taken-toggle-btn' + (taken ? ' active' : '')}
                     onClick={() => toggleTrackTaken(t)}
                   >
-                    {taken ? 'Taken ✓' : 'Mark taken'}
+                    {taken ? 'Taken' : 'Mark taken'}
                   </button>
                 </td>
               </tr>
               )
             })}
             {filtered.length === 0 && (
-              <tr><td colSpan={10} className="empty">No tracks match your filters.</td></tr>
+              <tr><td colSpan={11} className="empty">No tracks match your filters.</td></tr>
             )}
           </tbody>
         </table>
@@ -175,13 +185,13 @@ export default function TrackDatabase() {
           draftControls={
             <>
               <button className={'draft-toggle-btn' + (isSelected(selected) ? ' active' : '')} onClick={() => toggleTrack(selected)}>
-                {isSelected(selected) ? '✓ In Draft Pool' : '+ Add to Draft Pool'}
+                {isSelected(selected) ? 'In Draft Pool' : '+ Add to Draft Pool'}
               </button>
               <button
                 className={'taken-toggle-btn' + (isTrackTaken(selected) ? ' active' : '')}
                 onClick={() => toggleTrackTaken(selected)}
               >
-                {isTrackTaken(selected) ? 'Taken ✓ (click to unmark)' : 'Mark as taken'}
+                {isTrackTaken(selected) ? 'Taken (click to unmark)' : 'Mark as taken'}
               </button>
             </>
           }

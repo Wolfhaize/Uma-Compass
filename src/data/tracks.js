@@ -6,6 +6,42 @@
 // by inference — please spot-check against the original sheet and use the
 // in-app "Edit" / data file to correct anything that looks off.
 
+// ---- Accel tags ------------------------------------------------------------
+// A track can be valid for MORE than one accel type, so each track carries a
+// `focus` ARRAY (any of 'final' = C4, 'multi' = C3, 'straight').
+// Tags come from two places:
+//   1. The skills listed on the track (these are the rules to maintain):
+//        Angling and Scheming / Let's Pump Some Iron!  -> final    (C4)
+//        Moving Past and Beyond                        -> multi    (C3)
+//        Straightaway Spurt                            -> straight
+//   2. ONLY if a track lists none of those skills: a fallback guess from the
+//      course shape (the old single-tag heuristic) so it still gets a tag.
+const FOCUS_ORDER = ["final", "multi", "straight"];
+const FOCUS_SKILLS = {
+  "angling and scheming": "final",
+  "let's pump some iron": "final",
+  "moving past and beyond": "multi",
+  "straightaway spurt": "straight",
+};
+const focusKey = (name) => String(name || "").toLowerCase().replace(/[!]/g, "").replace(/\s+/g, " ").trim();
+
+const deriveFocus = (beforeAfter, corners, skills) => {
+  const tags = new Set();
+  for (const sk of skills || []) {
+    const tag = FOCUS_SKILLS[focusKey(sk)];
+    if (tag) tags.add(tag);
+  }
+  if (tags.size === 0) {
+    // fallback heuristic from course shape
+    const c = Number(corners) || 0;
+    if (beforeAfter === "Before") tags.add("straight");
+    else if (beforeAfter === "After" && c <= 2) tags.add("final");
+    else if (c >= 4) tags.add("multi");
+    else tags.add("final");
+  }
+  return FOCUS_ORDER.filter((t) => tags.has(t));
+};
+
 const T = (
   loc,
   distance,
@@ -40,6 +76,7 @@ const T = (
   skills,
   accels,
   umas: umas || accels,
+  focus: deriveFocus(beforeAfter, corners, skills),
 });
 
 export const TRACKS = [

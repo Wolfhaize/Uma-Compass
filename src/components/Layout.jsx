@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink, Link, Outlet } from 'react-router-dom'
 import Footer from './Footer.jsx'
+import PoolPanel from './PoolPanel.jsx'
+import { useDraft } from '../context/DraftContext.jsx'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Strategy Planner', end: true },
@@ -9,6 +11,7 @@ const NAV_ITEMS = [
 
 export default function Layout() {
   const [open, setOpen] = React.useState(false)
+  const { selectedKeys, setPicksOpen } = useDraft()
 
   return (
     <div className="site">
@@ -42,6 +45,13 @@ export default function Layout() {
                 {item.label}
               </NavLink>
             ))}
+            <button
+              type="button"
+              className="nav-link picks-btn"
+              onClick={() => { setPicksOpen(true); setOpen(false) }}
+            >
+              My Picks ({selectedKeys.length})
+            </button>
           </div>
         </div>
       </nav>
@@ -49,6 +59,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <PoolPanel />
     </div>
   )
 }
